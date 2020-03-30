@@ -24,6 +24,6 @@
   ));
 
   $sql-> closeCursor();
-  header('location:admin.php');
+  header('location:admin.php'); 
 
 ?>

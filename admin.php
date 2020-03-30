@@ -78,7 +78,7 @@ include 'include/nav.php'; ?>
             <div class="infos">
                 <label class="page-contact" class="labels" for="Date">Date de sortie </label>
             </div>
-            <input class="input-contact" type="text" id="date" name="date" placeholder="Date de sortie">
+            <input class="input-contact" type="text" id="Sortiee" name="Sortie" placeholder="Date de sortie">
 
             <div class="infos">
                 <label class="page-contact" class="labels" for="note">Note Allociné </label>
@@ -102,7 +102,7 @@ include 'include/nav.php'; ?>
             <div class="infos">
                 <label class="page-contact" for="synop">Synopsis </label>
             </div>
-            <textarea id="synop" name="synop" placeholder="Synopsis du film"></textarea>
+            <textarea id="synopsis" name="synopsis" placeholder="Synopsis du film"></textarea>
         </div>
 
                <div class="button">

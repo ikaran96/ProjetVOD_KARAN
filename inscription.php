@@ -10,7 +10,7 @@ require_once 'styleswitcher.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connexion</title>
+    <title>Inscription</title>
 
     <link rel="stylesheet" href="css/reset.css">
     
@@ -48,32 +48,32 @@ include 'include/nav.php'; ?>
     <div id="container">
       
 
-        <form action="connexion-user.php" method="POST">
-            <h2>Connexion</h2>
+        <form action="inscription-user.php" method="POST">
+            <h2>S'inscrire</h2>
 
-        
+            
+            <input class="login" type="text" placeholder="Nom" name="name_user" required> <br>
+          
+            <input class="login" type="text" placeholder="Prénom" name="firstname_user" required> <br>
+            
             <input class="login" type="text" placeholder="Nom d'utilisateur" name="username" required> <br>
+            
+            <input class="login" type="email" placeholder="Email" name="username_mail" required> <br>
 
-      
+            
             <input class="login"  type="password" placeholder="Mot de passe" name="password_user" required><br>
 
+            <select name="type_user" id="type">
+            <option name ="type_user" value="2">Admin</option>
+            <option name ="type_user" value="3">Mod</option>
+            <option name ="type_user" value="4">User</option>
+            </select>
 
-            <input class="ok"type="submit" id='login'name="login" value='Login'> <br>
 
-
-            <?php
-            if(isset($_GET['erreur'])){
-                $err = $_GET['erreur'];
-                if($err==1 || $err==2)
-                    echo "<p style='color:red'>Utilisateur ou mot de passe incorrect</p>";
-            }
-            ?> 
+            <input class="ok"type="submit" id='inscription' name="inscription" value='Inscription'> <br>
 
         </form>
 
-        <a href="sinscrire.php"> S'inscrire</a>
-        <form action="deconnexion.php" method="post">
-        <input class="ok"type="submit" id='submit' name ="logout" value='Logout'> <br>
 
         </form>
     </div>

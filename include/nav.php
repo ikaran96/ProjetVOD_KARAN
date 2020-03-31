@@ -11,6 +11,7 @@
                 <ul>
                     <Li><a href="catalogue.php">Films</a></Li>
                     <Li><a href="connexion.php">Connexion</a></Li>
+                    <Li><a href="contact.php">Contact</a></Li>
                         <div class="liens-couleurs">
 
                     <li>
@@ -62,6 +63,7 @@
             <button class="search-button" type="submit"><i class="fa fa-search"></i></button>
         </form>
         <div class="menu-dada">
+
             <ul>
 
                 <li>
@@ -79,6 +81,8 @@
                 </li>
                 <li><a href="catalogue.php">Films</a></li>
                 <li><a href="connexion.php">Connexion</a></li>
+                <li><a href="inscription.php">S'inscrire</a></li>
+                <li><a href="contact.php">Contact</a></li>
             </ul>
         </div>
     </div>

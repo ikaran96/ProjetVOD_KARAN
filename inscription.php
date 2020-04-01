@@ -39,16 +39,105 @@ require_once 'styleswitcher.php';
 
 <body>
 
-<?php 
-include 'include/nav.php'; ?>
+<!--TOGGLE MOBILE-->
+
+<div class="menu-wrap">
+    <input type="checkbox" class="toggler">
+    <div class="hamburger">
+        <div></div>
+    </div>
+    <div class="menu">
+        <div>
+            <div>
+                <ul>
+                    <Li><a href="catalogue.php">Films</a></Li>
+                    <Li><a href="connexion.php">Connexion</a></Li>
+                    <Li><a href="contact.php">Contact</a></Li>
+                        <div class="liens-couleurs">
+
+                    <li>
+                        <div class="style_axel"><a href="<?php echo $actuel; ?>?style=../css/index.css"></a>
+                            <div>
+                    </li>
+                    <li>
+                        <div class="style_pol"><a href="<?php echo $actuel; ?>?style=../pol/index2.css"></a></div>
+                    </li>
+                    <li>
+                        <div class="style_steven"><a href="<?php echo $actuel; ?>?style=../steven/index3.css"></a></div>
+                    </li>
+                    <li>
+                        <div class="style_ilayda"><a href="<?php echo $actuel; ?>?style=../axel/index4.css"></a></div>
+                    </li>
+                    </div>
 
 
-  <!-- zone de connexion -->
+
+                    <form action="">
+                        <input type="text" placeholder="" name="search">
+                        <button class="search-button" type="submit"><i class="fa fa-search"></i></button>
+                    </form>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<!--TITRE-->
+
+<div class="title-dada">
+    <h1> <a href="index.php"> ALLO SIMPLON</a></h1>
+</div>
+
+
+<!--NAV BAR-->
+
+<div class="nav-dada">
+    <div class="logo-dada">
+        <h1><a class="lien-home" href="index.php">ALLO SIMPLON</a> </h1>
+    </div>
+    <div class="menu-nav">
+        <form class="search-bar" action="">
+            <input type="text" placeholder="" name="search">
+            <button class="search-button" type="submit"><i class="fa fa-search"></i></button>
+        </form>
+        <div class="menu-dada">
+
+            <ul>
+
+                <li>
+                    <div class="style_axel"><a href="<?php echo $actuel; ?>?style=axel/index4.css"></a>
+                        <div>
+                </li>
+                <li>
+                    <div class="style_pol"><a href="<?php echo $actuel; ?>?style=pol/index2.css"></a></div>
+                </li>
+                <li>
+                    <div class="style_steven"><a href="<?php echo $actuel; ?>?style=steven/index3.css"></a></div>
+                </li>
+                <li>
+                    <div class="style_ilayda"><a href="<?php echo $actuel; ?>?style=index.css"></a></div>
+                </li>
+                <li><a href="catalogue.php">Films</a></li>
+                <li><a href="connexion.php">Connexion</a></li>
+                <li><a href="inscription.php">S'inscrire</a></li>
+                <li><a href="contact.php">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="vide"></div>
+
+
+  <!------------------------- INSCRIPTION--------------------->
 
     <div id="container">
       
 
-        <form action="inscription-user.php" method="POST">
+        <form action="traitement/inscription-user.php" method="POST">
             <h2>S'inscrire</h2>
 
             
@@ -79,8 +168,50 @@ include 'include/nav.php'; ?>
     </div>
 
 
-<?php 
-include 'include/footer.php'; ?>
+<!--FOOTER-->
+
+<footer>
+    <div class="col-footer">
+        <div class="sous-footer">
+            <p>
+                <h3 class="title-footer">A propos d'Allo Simplon</h3>
+                   <a class="liens-footer" href="#">Qui sommes-nous ?</a> <br>
+                   <a class="liens-footer" href=""> Allo Simplon recrute </a> <br>
+                   <a class="liens-footer" href=""> Contactez-nous </a> <br>
+            </p>
+        </div>
+
+        <div class="sous-footer">
+
+            <p>
+                <h3 class="title-footer">Aide</h3>
+                   <a class="liens-footer" href=""> Mon compte</a> <br>
+                   <a class="liens-footer" href=""> Forfaits </a><br> 
+                   <a class="liens-footer" href=""> Facturation</a> <br>
+
+
+
+            </p>
+
+        </div>
+
+        <div class="sous-footer">
+
+            <p>
+                <h3 class="title-footer">Mentions</h3>
+               <a class="liens-footer" href=""> Mentions légales </a> <br>
+                <a class="liens-footer" href=""> Conditions d'utlisation </a> <br> 
+               <a class="liens-footer" href="">Confidentialité</a>  <br>
+
+
+            </p>
+        </div>
+    </div>
+
+
+    <div class="copy">© 2020 Allo Simplon Tous droits réservés.</div>
+
+</footer>
 
 </body>
 </html>

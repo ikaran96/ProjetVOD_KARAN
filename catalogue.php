@@ -1,6 +1,7 @@
 <?php
 header('Content-type: text/html; charset=utf-8');
 require_once 'styleswitcher.php';
+include ('include/connectBDD.php');
 ?>
 
 
@@ -15,7 +16,7 @@ require_once 'styleswitcher.php';
 
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" media="screen, projection" type="text/css" id="css" href="<?php echo $url; ?>" />
-    
+
 
     <!--GOOGLE FONTS-->
 
@@ -41,14 +42,277 @@ require_once 'styleswitcher.php';
 </head>
 
 <body>
+    <!--TOGGLE MOBILE-->
 
-    <?php
-    include 'include/nav.php';
-    include 'include/filtres.php';
-    include 'include/films.php';
-    include 'include/paracata.php';
-    include 'include/footer.php';
-    ?>
+    <div class="menu-wrap">
+        <input type="checkbox" class="toggler">
+        <div class="hamburger">
+            <div></div>
+        </div>
+        <div class="menu">
+            <div>
+                <div>
+                    <ul>
+                        <Li><a href="catalogue.php">Films</a></Li>
+                        <Li><a href="connexion.php">Connexion</a></Li>
+                        <Li><a href="contact.php">Contact</a></Li>
+                        <div class="liens-couleurs">
+
+                            <li>
+                                <div class="style_axel"><a href="<?php echo $actuel; ?>?style=../css/index.css"></a>
+                                    <div>
+                            </li>
+                            <li>
+                                <div class="style_pol"><a href="<?php echo $actuel; ?>?style=../pol/index2.css"></a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="style_steven"><a
+                                        href="<?php echo $actuel; ?>?style=../steven/index3.css"></a></div>
+                            </li>
+                            <li>
+                                <div class="style_ilayda"><a href="<?php echo $actuel; ?>?style=../axel/index4.css"></a>
+                                </div>
+                            </li>
+                        </div>
+
+
+
+                        <form action="">
+                            <input type="text" placeholder="" name="search">
+                            <button class="search-button" type="submit"><i class="fa fa-search"></i></button>
+                        </form>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!--TITRE-->
+
+    <div class="title-dada">
+        <h1> <a href="index.php"> ALLO SIMPLON</a></h1>
+    </div>
+
+
+    <!--NAV BAR-->
+
+    <div class="nav-dada">
+        <div class="logo-dada">
+            <h1><a class="lien-home" href="index.php">ALLO SIMPLON</a> </h1>
+        </div>
+        <div class="menu-nav">
+            <form class="search-bar" action="">
+                <input type="text" placeholder="" name="search">
+                <button class="search-button" type="submit"><i class="fa fa-search"></i></button>
+            </form>
+            <div class="menu-dada">
+
+                <ul>
+
+                    <li>
+                        <div class="style_axel"><a href="<?php echo $actuel; ?>?style=axel/index4.css"></a>
+                            <div>
+                    </li>
+                    <li>
+                        <div class="style_pol"><a href="<?php echo $actuel; ?>?style=pol/index2.css"></a></div>
+                    </li>
+                    <li>
+                        <div class="style_steven"><a href="<?php echo $actuel; ?>?style=steven/index3.css"></a></div>
+                    </li>
+                    <li>
+                        <div class="style_ilayda"><a href="<?php echo $actuel; ?>?style=index.css"></a></div>
+                    </li>
+                    <li><a href="catalogue.php">Films</a></li>
+                    <li><a href="connexion.php">Connexion</a></li>
+                    <li><a href="inscription.php">S'inscrire</a></li>
+                    <li><a href="contact.php">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="vide"></div>
+
+
+
+    <!--NOS FILMS-->
+
+
+    <h2 class="axeltitreh2">Nos films</h2>
+
+    <div class="axelcontainer">
+
+        <!--FILTRES-->
+
+        <div class="axelgauche">
+            <h5 class="axelH5">Filtres</h5>
+            <h5 class="axelgenre">Genre</h5>
+            <div class="axelcase">
+                <input type="checkbox" id="coding" name="" value="">
+                <label for="coding">SF</label>
+            </div>
+            <div class="axelcase">
+                <input type="checkbox" id="" name="" value="">
+                <label for="">Aventure</label>
+            </div>
+            <div class="axelcase">
+                <input type="checkbox" id="" name="" value="">
+                <label for="">Action</label>
+            </div>
+            <div class="axelcase">
+                <input type="checkbox" id="" name="" value="">
+                <label for="">Animation</label>
+            </div>
+            <div class="axelcase">
+                <input type="checkbox" id="" name="" value="">
+                <label for="">Comedie</label>
+            </div>
+            <div class="axelcase">
+                <input type="checkbox" id="" name="" value="">
+                <label for="">Doc Fiction</label>
+            </div>
+            <div class="axelcase">
+                <input type="checkbox" id="" name="" value="">
+                <label for="">Drame</label>
+            </div>
+            <div class="axelcase">
+                <input type="checkbox" id="" name="" value="">
+                <label for="">Horreur</label>
+            </div>
+            <div class="axelcase">
+                <input type="checkbox" id="" name="" value="">
+                <label for="">Policier</label>
+            </div>
+            <div class="axelcase">
+                <input type="checkbox" id="" name="" value="">
+                <label for="">Romance</label>
+            </div>
+            <div class="axelcase">
+                <input type="checkbox" id="" name="" value="">
+                <label for="">Thriller</label>
+            </div>
+            <h5 class="axelgenre">Durée</h5>
+            <div class="axelcase">
+                <input type="checkbox" id="" name="" value="">
+                <label for="">moins d'1h30</label>
+            </div>
+            <div class="axelcase">
+                <input type="checkbox" id="" name="" value="">
+                <label for="">plus d'1h30</label>
+            </div>
+            <div class="axelcase">
+                <input type="checkbox" id="" name="" value="">
+                <label for="">Plus d'2h</label>
+            </div>
+
+            <h5 class="axelgenre">Note</h5>
+            <div class="axelcase">
+                <input type="checkbox" id="coding" name="" value="">
+                <label for="coding">5/5</label>
+            </div>
+            <div class="axelcase">
+                <input type="checkbox" id="coding" name="" value="">
+                <label for="coding">4/5</label>
+            </div>
+            <div class="axelcase">
+                <input type="checkbox" id="coding" name="" value="">
+                <label for="coding">3/5</label>
+            </div>
+            <div class="axelcase">
+                <input type="checkbox" id="coding" name="" value="">
+                <label for="coding">2/5</label>
+            </div>
+            <div class="axelcase">
+                <input type="checkbox" id="coding" name="" value="">
+                <label for="coding">1/5</label>
+            </div>
+        </div>
+
+
+        <!--CATALOGUE FILMS-->
+
+        <div class="axeldroite">
+            <?php 
+            $req = $bdd ->prepare("SELECT * FROM Film");
+            $req->execute();
+            while($donnees = $req->fetch()){?>
+
+            <a href="parasite.php?id=<?php echo $donnees['id_film'];?>" class="versfilm">
+                <div class="cardaxel">
+                    <img class="poster-img" src="img/<?php echo $donnees['Affiche'];?>" alt="">
+                    <div class="titrefilm"><?php echo $donnees['Titre'];?></div>
+                    <div class="infoaxel">
+                        <div class="textaxel">
+                            <p><?php echo $donnees['Note'];?>/5</p>
+                            <p><?php echo $donnees['Duree'];?></p>
+                            <p>Thriller</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <?php } ?>
+            
+        </div>
+
+
+    </div>
+
+
+
+    <!--PARALLAX-->
+
+    <div class="parallax-window" data-parallax="scroll" data-z-index="2" data-image-src=".\img\parallax2.jpg"></div>
+
+
+    <!--FOOTER-->
+
+    <footer>
+        <div class="col-footer">
+            <div class="sous-footer">
+                <p>
+                    <h3 class="title-footer">A propos d'Allo Simplon</h3>
+                    <a class="liens-footer" href="#">Qui sommes-nous ?</a> <br>
+                    <a class="liens-footer" href=""> Allo Simplon recrute </a> <br>
+                    <a class="liens-footer" href=""> Contactez-nous </a> <br>
+                </p>
+            </div>
+
+            <div class="sous-footer">
+
+                <p>
+                    <h3 class="title-footer">Aide</h3>
+                    <a class="liens-footer" href=""> Mon compte</a> <br>
+                    <a class="liens-footer" href=""> Forfaits </a><br>
+                    <a class="liens-footer" href=""> Facturation</a> <br>
+
+
+
+                </p>
+
+            </div>
+
+            <div class="sous-footer">
+
+                <p>
+                    <h3 class="title-footer">Mentions</h3>
+                    <a class="liens-footer" href=""> Mentions légales </a> <br>
+                    <a class="liens-footer" href=""> Conditions d'utlisation </a> <br>
+                    <a class="liens-footer" href="">Confidentialité</a> <br>
+
+
+                </p>
+            </div>
+        </div>
+
+
+        <div class="copy">© 2020 Allo Simplon Tous droits réservés.</div>
+
+    </footer>
 </body>
 
 </html>

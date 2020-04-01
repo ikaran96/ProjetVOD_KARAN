@@ -1,6 +1,5 @@
 <?php
-
-include 'connectBDD.php';
+  include ('../include/connectBDD.php');
 
     $nom= !empty($_POST['name_user']) ? $_POST['name_user'] : NULL;
     $prenom = !empty($_POST['firstname_user']) ? $_POST['firstname_user'] : NULL;
@@ -29,5 +28,5 @@ include 'connectBDD.php';
     ));
   
     $sql-> closeCursor();
-    header('location:index.php');
+    header('location:../index.php'); 
 

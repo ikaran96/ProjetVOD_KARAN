@@ -1,6 +1,6 @@
 <?php
 
-  include ('connectBDD.php');
+include ('../include/connectBDD.php');
 
   $nom = !empty($_POST['nom_prod']) ? $_POST['nom_prod'] : NULL;
   $prenom = !empty($_POST['prenom_prod']) ? $_POST['prenom_prod'] : NULL;
@@ -15,6 +15,6 @@
       ));
 
   $sql-> closeCursor();
-  header('location:admin.php');
+  header('location:../admin.php'); 
 
 ?>

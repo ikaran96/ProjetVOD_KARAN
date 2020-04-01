@@ -1,6 +1,6 @@
 <?php
 
-include 'connectBDD.php';
+include ('../include/connectBDD.php');
 
 $pseudo = !empty($_POST['username']) ? $_POST['username'] : NULL;
 $mdp = !empty($_POST['password_user']) ? $_POST['password_user'] : NULL;
@@ -26,7 +26,7 @@ $stmt->execute(
 
    if($count > 0){
        $_SESSION["username"] = $pseudo;
-       header("location:index.php");
+       header('location:../index.php'); 
    } else {
        $msg = '<label>Username or Password is wrong </label>';
    };

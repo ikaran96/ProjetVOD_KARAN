@@ -1,6 +1,6 @@
 <?php
 
-  include ('connectBDD.php');
+  include ('../include/connectBDD.php');
 
   $titre = !empty($_POST['titre']) ? $_POST['titre'] : NULL;
   $affiche = !empty($_POST['affiche']) ? $_POST['affiche'] : NULL;
@@ -24,6 +24,6 @@
   ));
 
   $sql-> closeCursor();
-  header('location:admin.php'); 
+  header('location:../admin.php'); 
 
 ?>

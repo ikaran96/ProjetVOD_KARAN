@@ -1,6 +1,6 @@
 <?php
 
-include ('connectBDD.php');
+include ('../include/connectBDD.php');
 $type = !empty($_POST['typeuser']) ? $_POST['typeuser'] : NULL;
 
 $sql = $bdd->prepare ("INSERT INTO TypeUser (Nom)
@@ -11,7 +11,7 @@ $sql = $bdd->prepare ("INSERT INTO TypeUser (Nom)
       ));
 
   $sql-> closeCursor();
-  header('location:admin.php');
+  header('location:../admin.php'); 
 
 
 

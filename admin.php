@@ -39,8 +39,104 @@ require_once 'styleswitcher.php';
 
 <body>
 
-    <?php 
-include 'include/nav.php'; ?>
+    <!--TOGGLE MOBILE-->
+
+    <div class="menu-wrap">
+        <input type="checkbox" class="toggler">
+        <div class="hamburger">
+            <div></div>
+        </div>
+        <div class="menu">
+            <div>
+                <div>
+                    <ul>
+                        <Li><a href="catalogue.php">Films</a></Li>
+                        <Li><a href="connexion.php">Connexion</a></Li>
+                        <Li><a href="contact.php">Contact</a></Li>
+                        <div class="liens-couleurs">
+
+                            <li>
+                                <div class="style_axel"><a href="<?php echo $actuel; ?>?style=../css/index.css"></a>
+                                    <div>
+                            </li>
+                            <li>
+                                <div class="style_pol"><a href="<?php echo $actuel; ?>?style=../pol/index2.css"></a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="style_steven"><a
+                                        href="<?php echo $actuel; ?>?style=../steven/index3.css"></a></div>
+                            </li>
+                            <li>
+                                <div class="style_ilayda"><a href="<?php echo $actuel; ?>?style=../axel/index4.css"></a>
+                                </div>
+                            </li>
+                        </div>
+
+
+
+                        <form action="">
+                            <input type="text" placeholder="" name="search">
+                            <button class="search-button" type="submit"><i class="fa fa-search"></i></button>
+                        </form>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!--TITRE-->
+
+    <div class="title-dada">
+        <h1> <a href="index.php"> ALLO SIMPLON</a></h1>
+    </div>
+
+
+    <!--NAV BAR-->
+
+    <div class="nav-dada">
+        <div class="logo-dada">
+            <h1><a class="lien-home" href="index.php">ALLO SIMPLON</a> </h1>
+        </div>
+        <div class="menu-nav">
+            <form class="search-bar" action="">
+                <input type="text" placeholder="" name="search">
+                <button class="search-button" type="submit"><i class="fa fa-search"></i></button>
+            </form>
+            <div class="menu-dada">
+
+                <ul>
+
+                    <li>
+                        <div class="style_axel"><a href="<?php echo $actuel; ?>?style=axel/index4.css"></a>
+                            <div>
+                    </li>
+                    <li>
+                        <div class="style_pol"><a href="<?php echo $actuel; ?>?style=pol/index2.css"></a></div>
+                    </li>
+                    <li>
+                        <div class="style_steven"><a href="<?php echo $actuel; ?>?style=steven/index3.css"></a></div>
+                    </li>
+                    <li>
+                        <div class="style_ilayda"><a href="<?php echo $actuel; ?>?style=index.css"></a></div>
+                    </li>
+                    <li><a href="catalogue.php">Films</a></li>
+                    <li><a href="connexion.php">Connexion</a></li>
+                    <li><a href="inscription.php">S'inscrire</a></li>
+                    <li><a href="contact.php">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="vide"></div>
+
+
+
+    <!---------------------FORMULAIRE ADMIN----------------->
 
     <div class="bouttons-onglets">
 
@@ -48,6 +144,8 @@ include 'include/nav.php'; ?>
         <button class="tablink" onclick="openPage('Acteurs', this)">Acteurs</button>
         <button class="tablink" onclick="openPage('Realisateurs', this)">Realisateurs</button>
         <button class="tablink" onclick="openPage('Producteurs', this)">Producteurs</button>
+        <button class="tablink" onclick="openPage('Genres', this)">Genres</button>
+        <button class="tablink" onclick="openPage('Relations', this)">Relations</button>
         <button class="tablink" onclick="openPage('Admin', this)">Admin</button>
 
     </div>
@@ -58,10 +156,11 @@ include 'include/nav.php'; ?>
 
     <div id="Films" class="tabcontent">
 
-        <form class="form-contact" action="insert-films.php" method="post">
+        <form class="form-contact" action="traitement/insert-films.php" method="post">
             <h2 class="contactez-nous">Ajouter des films</h2>
 
             <div class="info_form">
+            
 
 
                 <div class="infos">
@@ -118,7 +217,7 @@ include 'include/nav.php'; ?>
 
 
     <div id="Acteurs" class="tabcontent">
-        <form class="form-contact" action="insert-acteurs.php" method="post">
+        <form class="form-contact" action="traitement/insert-acteurs.php" method="post">
             <h2 class="contactez-nous">Ajouter des acteurs</h2>
 
             <div class="info_form">
@@ -151,7 +250,7 @@ include 'include/nav.php'; ?>
 
 
     <div id="Realisateurs" class="tabcontent">
-        <form class="form-contact" action="insert-realisateurs.php" method="post">
+        <form class="form-contact" action="traitement/insert-realisateurs.php" method="post">
             <h2 class="contactez-nous">Ajouter des realisateurs</h2>
 
             <div class="info_form">
@@ -184,7 +283,7 @@ include 'include/nav.php'; ?>
 
     <div id="Producteurs" class="tabcontent">
 
-        <form class="form-contact" action="insert-producteurs.php" method="post">
+        <form class="form-contact" action="traitement/insert-producteurs.php" method="post">
             <h2 class="contactez-nous">Ajouter des producteurs</h2>
 
             <div class="info_form">
@@ -214,7 +313,7 @@ include 'include/nav.php'; ?>
 
     <div id="Admin" class="tabcontent">
 
-        <form class="form-contact" action="insert-type.php" method="post">
+        <form class="form-contact" action="traitement/insert-type.php" method="post">
             <h2 class="contactez-nous">Ajouter des type user</h2>
 
             <div class="info_form">
@@ -234,8 +333,127 @@ include 'include/nav.php'; ?>
     </div>
 
 
-    <?php 
-include 'include/footer.php'; ?>
+<!------------------------------------AJOUT GENRES----------------------------------------------->
+
+
+<div id="Genres" class="tabcontent">
+        <form class="form-contact" action="traitement/insert-genre.php" method="post">
+            <h2 class="contactez-nous">Ajouter des genres</h2>
+
+            <div class="info_form">
+
+
+                <div class="infos">
+                    <label class="page-contact" for="Title">Nom</label>
+                </div>
+                <input class="input-contact" type="text" id="nom_genre" name="nom_genre" placeholder="Nom">
+
+
+               
+                <div class="button">
+                    <button class="button_form" type="submit">Envoyer</button>
+                </div>
+            </div>
+
+
+
+
+        </form>
+    </div>
+
+    <!------------------------------------RELATIONS----------------------------------------------->
+
+
+<div id="Relations" class="tabcontent">
+        <form class="form-contact" action="traitement/relation-acteurfilm.php" method="post">
+            <h2 class="contactez-nous">Relations</h2>
+
+            <fieldset>
+           <select  name="id_film" require >
+            <?php
+                include ('include/connectBDD.php');
+
+                $req = $bdd->prepare(" SELECT id_film, Titre FROM Film ");
+                $req->execute();
+
+                while ( $donnees = $req->fetch() ){ ?>
+
+                  <option value="<?= $donnees['id_film']; ?>"> Titre : <?= $donnees['Titre']; ?> | Id film : <?= $donnees['id_film']; ?> </option>
+             <?php  }
+             ?>
+            </select>
+
+            <!------------------ACTEURS--------------------->
+
+            <select name="id_acteur" require multiple>
+            
+            <?php
+                $req2 = $bdd->prepare(" SELECT id_acteur, Nom, Prenom FROM Acteur ");
+                $req2->execute();
+
+                while ( $donnees = $req2->fetch() ){ ?>
+
+                  <option value="<?= $donnees['id_acteur']; ?>"> <?= $donnees['Nom']; ?><?= $donnees['Prenom']; ?> | Id acteur : <?= $donnees['id_acteur']; ?> </option>
+              <?php  }
+             ?>
+             </select>
+    </fieldset>
+
+    <div class="button">
+                    <button class="button_form" type="submit">Envoyer</button>
+                </div>
+
+
+
+
+        </form>
+    </div>
+
+
+    <!-------------------------------------------------FOOTER------------------------------------------------->
+
+    <footer>
+        <div class="col-footer">
+            <div class="sous-footer">
+                <p>
+                    <h3 class="title-footer">A propos d'Allo Simplon</h3>
+                    <a class="liens-footer" href="#">Qui sommes-nous ?</a> <br>
+                    <a class="liens-footer" href=""> Allo Simplon recrute </a> <br>
+                    <a class="liens-footer" href=""> Contactez-nous </a> <br>
+                </p>
+            </div>
+
+            <div class="sous-footer">
+
+                <p>
+                    <h3 class="title-footer">Aide</h3>
+                    <a class="liens-footer" href=""> Mon compte</a> <br>
+                    <a class="liens-footer" href=""> Forfaits </a><br>
+                    <a class="liens-footer" href=""> Facturation</a> <br>
+
+
+
+                </p>
+
+            </div>
+
+            <div class="sous-footer">
+
+                <p>
+                    <h3 class="title-footer">Mentions</h3>
+                    <a class="liens-footer" href=""> Mentions légales </a> <br>
+                    <a class="liens-footer" href=""> Conditions d'utlisation </a> <br>
+                    <a class="liens-footer" href="">Confidentialité</a> <br>
+
+
+                </p>
+            </div>
+        </div>
+
+
+        <div class="copy">© 2020 Allo Simplon Tous droits réservés.</div>
+
+    </footer>
 
     <script>
         function openPage(pageName, elmnt, color) {

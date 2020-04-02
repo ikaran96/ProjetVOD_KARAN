@@ -2,7 +2,7 @@ body{
     background-color: #121111;
 }
 
-.nav-dada{
+.new-nav{
     display:none;
 }
 
@@ -601,141 +601,74 @@ FOOTER {
     }
 /*----------------------------------------------------------NAV BAR----------------------------------------------------------*/
 
-.nav-dada{
+.new-nav {
     display:block;
-    width:100%;
-    height:60px;
-    background-color:black;
-    position:fixed;
-    z-index:100;
-    padding-top:15px;
-
-}
-
-
-.vide{
-    display:block;
-    height:60px;
-}
-
-.logo-dada{
-    width:30%;
-    float:left;
-    font-family:"Baloo Tammudu 2", Arial, Helvetica, sans-serif;
-    font-size:30px;
-    padding-top:15px;
-    padding-left:30px;
-    font-weight:900;
+    list-style-type: none;
+    overflow: hidden;
+    background-color: black;
+    font-family: "Baloo Tammudu 2", Arial, Helvetica, sans-serif;
     color:#FF7200;
-}
-
-.style_axel{
-    width:5px;
-    height:5px;
-    background-color:#55557E;
-    border-radius:50%;
-    transition: 0.2s ease;
-
-}
-
-
-
-.style_ilayda{
-    width:5px;
-    height:5px;
-    background-color:#FF7200;
-    border-radius:50%;
-    transition: 0.2s ease;
-}
-
-.style_pol{
-    width:5px;
-    height:5px;
-    background-color:#C70039;
-    border-radius:50%;
-    transition: 0.2s ease;
-}
-
-.style_steven{
-    width:5px;
-    height:5px;
-    background-color:#DAF7A6;
-    border-radius:50%;
-    transition: 0.2s ease;
-}
-
-
-.style_ilayda:hover,
-.style_pol:hover,
-.style_axel:hover,
-.style_steven:hover{
-transform: scale(1.5);
-transition: 0.2s ease;
-}
-
-
-.menu-dada{
     width:100%;
-}
-
-
-
-.menu-dada ul{
-    float:right;
-    list-style:none;
-
-}
-
-.menu-nav{
-    overflow:hidden;
-   
-}
-
-.menu-nav ul li{
+  }
+  
+  .logo-simplon{
+      float:left;
+      font-weight:900;
+      font-size:30px;
+      padding-top:10px;
+  }
+  
+  .themes{
+      margin-right:100px;
+  }
+  
+  .liens-nav{
+      float:right;
+      padding-top:15px;
+  }
+  
+  .li-nav {
+    float: left;
+  }
+  
+  li .a-nav, .dropbtn {
     display: inline-block;
-}
-
-.menu-nav ul li a{
-    display:inline-block;
-    text-decoration:none;
-    color:#FF7200;
-     font-family:"Baloo Tammudu 2", Arial, Helvetica, sans-serif;
-     padding-top:15px;
-     padding-left:20px;
-     padding-right:20px;
-     font-size:14px;
-     font-weight:700;
-}
-
-.menu-nav ul li a:hover{
-color:white;
-}
-
-.search-bar{
-    float:right;
-    margin-right:30px;
-    margin-top:5px;
-}
-
-
-.lien-home {
+    color: #FF7200;
+    text-align: center;
+    padding: 14px 16px;
     text-decoration: none;
-    color:#FF7200;
-}
-
-.lien-home:active{
-    color:#FF7200;
-}
-
-.lien-home:visited{
-    color:#FF7200;
-}
-
-.lien-home:hover{
-    color:white;
-}
-
-
+  }
+  
+  li .a-nav:hover, .dropdown:hover .dropbtn {
+   color:white;
+  }
+  
+  li.dropdown {
+    display: inline-block;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #FF7200;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content .a-nav {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+  }
+  
+  .dropdown-content .a-nav:hover {background-color: black;}
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
 
 
 
@@ -1510,6 +1443,9 @@ label{
     font-size:40px;
     font-weight:900;
     margin-top:30px;
+    margin-left:auto;
+    margin-right:auto;
+    text-align: center;
 }
 
 .form-contact{
@@ -1576,11 +1512,13 @@ textarea{
     }
 }
 
+/*------------------------ADMIN--------------------------*/
+
 
 
 select{
     border:5px solid #FF7200;
-    margin-top:50px;
+    margin-top:20px;
     margin-bottom:50px;
     width:100%;
     background-color:black;
@@ -1608,4 +1546,39 @@ select{
     border:5px solid white;
     background-color:white;
     color:#FF7200;
+}
+
+.relations-titre{
+    margin-left:auto;
+    margin-right:auto;
+    color:#FF7200;
+    font-family: "Baloo Tammudu 2", Arial, Helvetica, sans-serif; 
+    font-size:20px;
+    font-weight:900;
+
+}
+
+#Relations > form{
+    background-color:black;
+    margin-top:40px;
+    margin-bottom:40px;
+    PADDING:20px;
+    border:5px solid #FF7200;}
+
+@media only screen and (min-width:1000px){
+
+#Relations > form{
+    background-color:black;
+    margin-top:40px;
+    margin-bottom:40px;
+    PADDING:20px;
+    border:5px solid #FF7200;
+    width:20%;
+    
+    
+}
+
+
+
+
 }

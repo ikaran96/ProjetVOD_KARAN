@@ -1,4 +1,5 @@
 <?php
+session_start();
 header('Content-type: text/html; charset=utf-8');
 require_once 'styleswitcher.php';
 ?>
@@ -97,40 +98,38 @@ require_once 'styleswitcher.php';
 
     <!--NAV BAR-->
 
-    <div class="nav-dada">
-        <div class="logo-dada">
-            <h1><a class="lien-home" href="index.php">ALLO SIMPLON</a> </h1>
-        </div>
-        <div class="menu-nav">
-            <form class="search-bar" action="">
-                <input type="text" placeholder="" name="search">
-                <button class="search-button" type="submit"><i class="fa fa-search"></i></button>
-            </form>
-            <div class="menu-dada">
-
-                <ul>
-
-                    <li>
-                        <div class="style_axel"><a href="<?php echo $actuel; ?>?style=axel/index4.css"></a>
-                            <div>
-                    </li>
-                    <li>
-                        <div class="style_pol"><a href="<?php echo $actuel; ?>?style=pol/index2.css"></a></div>
-                    </li>
-                    <li>
-                        <div class="style_steven"><a href="<?php echo $actuel; ?>?style=steven/index3.css"></a></div>
-                    </li>
-                    <li>
-                        <div class="style_ilayda"><a href="<?php echo $actuel; ?>?style=index.css"></a></div>
-                    </li>
-                    <li><a href="catalogue.php">Films</a></li>
-                    <li><a href="connexion.php">Connexion</a></li>
-                    <li><a href="inscription.php">S'inscrire</a></li>
-                    <li><a href="contact.php">Contact</a></li>
-                </ul>
-            </div>
-        </div>
+    <ul class="new-nav">
+    <div class="logo-simplon">
+  <li class="li-nav" ><a class="a-nav" href="index.php">ALLO SIMPLON</a></li></div>
+  
+  <div class="liens-nav">
+  <li class="li-nav"><a class="a-nav" href="catalogue.php">Catalogue</a></li>
+  <li class="li-nav"><a class="a-nav" href="contact.php">Contact</a></li>
+  <li class="dropdown">
+    <a class="a-nav"href="javascript:void(0)" class="dropbtn">Connexion/Inscription</a>
+    <div class="dropdown-content">
+      <a class="a-nav" href="connexion.php">Se connecter</a>
+      <a class="a-nav" href="inscription.php">S'inscrire</a>
+      <a class="a-nav" href="traitement/deconnexion.php">Se déconnecter</a>
+      
+    
+   
     </div>
+  </li>
+  <li class="dropdown themes">
+    <a class="a-nav" href="javascript:void(0)" class="dropbtn">Thèmes</a>
+    <div class="dropdown-content">
+      <a class="a-nav" href="<?php echo $actuel; ?>?style=index.css">Orange</a>
+      <a class="a-nav" href="<?php echo $actuel; ?>?style=steven/index3.css">Vert</a>
+      <a class="a-nav" href="<?php echo $actuel; ?>?style=axel/index4.css">Violet</a>
+      <a class="a-nav" href="<?php echo $actuel; ?>?style=pol/index2.css">Rose</a>
+   
+    </div>
+  </li>
+</div>
+</ul>
+
+
 
     <div class="vide"></div>
 
@@ -160,48 +159,30 @@ require_once 'styleswitcher.php';
             <h2 class="contactez-nous">Ajouter des films</h2>
 
             <div class="info_form">
-            
 
 
-                <div class="infos">
-                    <label class="page-contact" for="Title">Titre film</label>
-                </div>
+               
                 <input class="input-contact" type="text" id="titre" name="titre" placeholder="Titre film">
 
 
-                <div class="infos">
-                    <label class="page-contact" for="Duree">Durée</label>
-                </div>
+              
                 <input class="input-contact" type="text" id="duree" name="duree" placeholder="Durée">
 
 
-                <div class="infos">
-                    <label class="page-contact" class="labels" for="Date">Date de sortie </label>
-                </div>
+                
                 <input class="input-contact" type="text" id="sortie" name="sortie" placeholder="Date de sortie">
 
-                <div class="infos">
-                    <label class="page-contact" class="labels" for="note">Note Allociné </label>
-                </div>
                 <input class="input-contact" type="text" id="note" name="note" placeholder="Note Allociné">
 
-                <div class="infos">
-                    <label class="page-contact" class="labels" for="ba">Bande Annonce </label>
-                </div>
                 <input class="input-contact" type="text" id="ba" name="ba" placeholder="Iframe YouTube">
 
-                <div class="infos">
-                    <label class="page-contact" class="labels" for="affiche">Affiche </label>
-                </div>
                 <input class="input-contact" type="text" id="affiche" name="affiche" placeholder="Affiche">
 
 
             </div>
 
             <div class="message_form">
-                <div class="infos">
-                    <label class="page-contact" for="synop">Synopsis </label>
-                </div>
+               
                 <textarea id="synopsis" name="synopsis" placeholder="Synopsis du film"></textarea>
             </div>
 
@@ -223,15 +204,9 @@ require_once 'styleswitcher.php';
             <div class="info_form">
 
 
-                <div class="infos">
-                    <label class="page-contact" for="Title">Nom</label>
-                </div>
                 <input class="input-contact" type="text" id="nom_acteur" name="nom_acteur" placeholder="Nom">
 
 
-                <div class="infos">
-                    <label class="page-contact" for="Duree">Prénom</label>
-                </div>
                 <input class="input-contact" type="text" id="prenom_acteur" name="prenom_acteur" placeholder="Prénom">
 
 
@@ -256,15 +231,9 @@ require_once 'styleswitcher.php';
             <div class="info_form">
 
 
-                <div class="infos">
-                    <label class="page-contact" for="Title">Nom</label>
-                </div>
                 <input class="input-contact" type="text" id="nom_real" name="nom_real" placeholder="Nom">
 
 
-                <div class="infos">
-                    <label class="page-contact" for="Duree">Prénom</label>
-                </div>
                 <input class="input-contact" type="text" id="prenom_real" name="prenom_real" placeholder="Prénom">
 
 
@@ -289,15 +258,9 @@ require_once 'styleswitcher.php';
             <div class="info_form">
 
 
-                <div class="infos">
-                    <label class="page-contact" for="Title">Nom</label>
-                </div>
                 <input class="input-contact" type="text" id="nom_prod" name="nom_prod" placeholder="Nom">
 
 
-                <div class="infos">
-                    <label class="page-contact" for="Duree">Prénom</label>
-                </div>
                 <input class="input-contact" type="text" id="prenom_prod" name="prenom_prod" placeholder="Prénom">
 
 
@@ -319,9 +282,6 @@ require_once 'styleswitcher.php';
             <div class="info_form">
 
 
-                <div class="infos">
-                    <label class="page-contact" for="Type">Type user</label>
-                </div>
                 <input class="input-contact" type="text" id="typeuser" name="typeuser" placeholder="Type User">
 
 
@@ -333,23 +293,20 @@ require_once 'styleswitcher.php';
     </div>
 
 
-<!------------------------------------AJOUT GENRES----------------------------------------------->
+    <!------------------------------------AJOUT GENRES----------------------------------------------->
 
 
-<div id="Genres" class="tabcontent">
+    <div id="Genres" class="tabcontent">
         <form class="form-contact" action="traitement/insert-genre.php" method="post">
             <h2 class="contactez-nous">Ajouter des genres</h2>
 
             <div class="info_form">
 
 
-                <div class="infos">
-                    <label class="page-contact" for="Title">Nom</label>
-                </div>
                 <input class="input-contact" type="text" id="nom_genre" name="nom_genre" placeholder="Nom">
 
 
-               
+
                 <div class="button">
                     <button class="button_form" type="submit">Envoyer</button>
                 </div>
@@ -361,16 +318,23 @@ require_once 'styleswitcher.php';
         </form>
     </div>
 
-    <!------------------------------------RELATIONS----------------------------------------------->
+    <!---------------------------------------------------------RELATIONS-------------------------------------------------------------------->
 
 
-<div id="Relations" class="tabcontent">
-        <form class="form-contact" action="traitement/relation-acteurfilm.php" method="post">
-            <h2 class="contactez-nous">Relations</h2>
+    <div id="Relations" class="tabcontent">
+        <h2 class="contactez-nous">Relations</h2>
+
+
+        <form class="form-contact" action="traitement/relationsacteur.php" method="post">
+
+         <!------------------ACTEURS/FILM--------------------->
+
+
+            <h3 class="relations-titre">Ajouter des acteurs dans des films</h3>
 
             <fieldset>
-           <select  name="id_film" require >
-            <?php
+                <select name="id_film" require>
+                    <?php
                 include ('include/connectBDD.php');
 
                 $req = $bdd->prepare(" SELECT id_film, Titre FROM Film ");
@@ -378,36 +342,181 @@ require_once 'styleswitcher.php';
 
                 while ( $donnees = $req->fetch() ){ ?>
 
-                  <option value="<?= $donnees['id_film']; ?>"> Titre : <?= $donnees['Titre']; ?> | Id film : <?= $donnees['id_film']; ?> </option>
-             <?php  }
+                    <option value="<?= $donnees['id_film']; ?>"> <?= $donnees['Titre']; ?> </option>
+                    <?php  }
              ?>
-            </select>
+                </select>
 
-            <!------------------ACTEURS--------------------->
 
-            <select name="id_acteur" require multiple>
-            
-            <?php
+                <select name="id_acteur" require >
+
+                    <?php
                 $req2 = $bdd->prepare(" SELECT id_acteur, Nom, Prenom FROM Acteur ");
                 $req2->execute();
 
                 while ( $donnees = $req2->fetch() ){ ?>
 
-                  <option value="<?= $donnees['id_acteur']; ?>"> <?= $donnees['Nom']; ?><?= $donnees['Prenom']; ?> | Id acteur : <?= $donnees['id_acteur']; ?> </option>
-              <?php  }
+                    <option value="<?= $donnees['id_acteur']; ?>"> <?= $donnees['Nom']; ?> <?= $donnees['Prenom']; ?> </option>
+                    <?php  }
              ?>
-             </select>
-    </fieldset>
+                </select>
+            </fieldset>
 
-    <div class="button">
-                    <button class="button_form" type="submit">Envoyer</button>
-                </div>
+            <div class="button">
+                <button class="button_form" type="submit">Envoyer</button>
+            </div>
+        </form>
 
 
 
 
+
+
+
+<!------------------REALISATEURS/FILM--------------------->
+
+        <form class="form-contact" action="traitement/relationsreal.php" method="post">
+
+        
+
+            <h3 class="relations-titre">Ajouter des réalisateurs à des films </h3>
+
+            <fieldset>
+                <select name="id_film" require>
+                    <?php
+                include ('include/connectBDD.php');
+
+                $req = $bdd->prepare(" SELECT id_film, Titre FROM Film ");
+                $req->execute();
+
+                while ( $donnees = $req->fetch() ){ ?>
+
+                    <option value="<?= $donnees['id_film']; ?>">   <?= $donnees['Titre']; ?></option>
+                    <?php  }
+             ?>
+                </select>
+
+
+
+                <select name="id_realisateur" require >
+
+                    <?php
+                $req3 = $bdd->prepare(" SELECT id_realisateur, Nom, Prenom FROM Realisateur ");
+                $req3->execute();
+
+                while ( $donnees = $req3->fetch() ){ ?>
+
+                    <option value="<?= $donnees['id_realisateur']; ?>"> <?= $donnees['Nom']; ?> <?= $donnees['Prenom']; ?> </option>
+                    <?php  }
+             ?>
+                </select>
+            </fieldset>
+
+            <div class="button">
+                <button class="button_form" type="submit">Envoyer</button>
+            </div>
+        </form>
+
+
+
+        <!------------------PRODCUTEURS/FILM--------------------->
+
+
+        <form class="form-contact" action="traitement/relationsprod.php" method="post">
+        
+
+
+            <h3 class="relations-titre">Ajouter des producteurs à des films </h3>
+
+            <fieldset>
+                <select name="id_film" require>
+                    <?php
+                include ('include/connectBDD.php');
+
+                $req = $bdd->prepare(" SELECT id_film, Titre FROM Film ");
+                $req->execute();
+
+                while ( $donnees = $req->fetch() ){ ?>
+
+                    <option value="<?= $donnees['id_film']; ?>">  <?= $donnees['Titre']; ?>  </option>
+                    <?php  }
+             ?>
+                </select>
+
+        
+
+                <select name="id_producteur" require  >
+
+                    <?php
+                $req4 = $bdd->prepare(" SELECT id_producteur, Nom, Prenom FROM Producteur ");
+                $req4->execute();
+
+                while ( $donnees = $req4->fetch() ){ ?>
+
+                    <option value="<?= $donnees['id_producteur']; ?>"> <?= $donnees['Nom']; ?>  <?= $donnees['Prenom']; ?> </option>
+                    <?php  }
+             ?>
+                </select>
+            </fieldset>
+
+            <div class="button">
+                <button class="button_form" type="submit">Envoyer</button>
+            </div>
+        </form>
+
+
+
+
+
+
+               <!------------------GENRES/FILM--------------------->
+
+        <form class="form-contact" action="traitement/relationsgenre.php" method="post">
+
+
+            <h3 class="relations-titre">Ajouter des genres à des films</h3>
+
+            <fieldset>
+                <select name="id_genre" require>
+                    <?php
+                include ('include/connectBDD.php');
+
+                $req = $bdd->prepare(" SELECT id_film, Titre FROM Film ");
+                $req->execute();
+
+                while ( $donnees = $req->fetch() ){ ?>
+
+                    <option value="<?= $donnees['id_film']; ?>">  <?= $donnees['Titre']; ?> </option>
+                    <?php  }
+             ?>
+                </select>
+
+      
+
+                <select name="id_genre" require  >
+
+                    <?php
+                $req5 = $bdd->prepare(" SELECT id_genre, genre FROM Genre ");
+                $req5->execute();
+
+                while ( $donnees = $req5->fetch() ){ ?>
+
+                    <option value="<?= $donnees['id_genre']; ?>"> <?= $donnees['genre']; ?>  </option>
+                    <?php  }
+             ?>
+                </select>
+            </fieldset>
+
+            <div class="button">
+                <button class="button_form" type="submit">Envoyer</button>
+            </div>
         </form>
     </div>
+
+
+
+
+  
 
 
     <!-------------------------------------------------FOOTER------------------------------------------------->

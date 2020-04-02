@@ -1,6 +1,9 @@
 <?php
   include ('../include/connectBDD.php');
 
+
+//ACTEURS FILMS  
+
   $film = !empty($_POST['id_film']) ? $_POST['id_film'] : NULL;
   $acteur = !empty($_POST['id_acteur']) ? $_POST['id_acteur'] : NULL;
 

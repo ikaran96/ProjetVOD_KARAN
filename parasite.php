@@ -1,4 +1,5 @@
 <?php
+session_start();
 header('Content-type: text/html; charset=utf-8');
 require_once 'styleswitcher.php';
 include ('include/connectBDD.php');
@@ -99,42 +100,39 @@ include ('include/connectBDD.php');
 </div>
 
 
-<!--NAV BAR-->
+  <!--NAV BAR-->
 
-<div class="nav-dada">
-    <div class="logo-dada">
-        <h1><a class="lien-home" href="index.php">ALLO SIMPLON</a> </h1>
+  <ul class="new-nav">
+    <div class="logo-simplon">
+  <li class="li-nav" ><a class="a-nav" href="index.php">ALLO SIMPLON</a></li></div>
+  
+  <div class="liens-nav">
+  <li class="li-nav"><a class="a-nav" href="catalogue.php">Catalogue</a></li>
+  <li class="li-nav"><a class="a-nav" href="contact.php">Contact</a></li>
+  <li class="dropdown">
+    <a class="a-nav"href="javascript:void(0)" class="dropbtn">Connexion/Inscription</a>
+    <div class="dropdown-content">
+      <a class="a-nav" href="connexion.php">Se connecter</a>
+      <a class="a-nav" href="inscription.php">S'inscrire</a>
+      <a class="a-nav" href="traitement/deconnexion.php">Se déconnecter</a>
+      
+    
+   
     </div>
-    <div class="menu-nav">
-        <form class="search-bar" action="">
-            <input type="text" placeholder="" name="search">
-            <button class="search-button" type="submit"><i class="fa fa-search"></i></button>
-        </form>
-        <div class="menu-dada">
-
-            <ul>
-
-                <li>
-                    <div class="style_axel"><a href="<?php echo $actuel; ?>?style=axel/index4.css"></a>
-                        <div>
-                </li>
-                <li>
-                    <div class="style_pol"><a href="<?php echo $actuel; ?>?style=pol/index2.css"></a></div>
-                </li>
-                <li>
-                    <div class="style_steven"><a href="<?php echo $actuel; ?>?style=steven/index3.css"></a></div>
-                </li>
-                <li>
-                    <div class="style_ilayda"><a href="<?php echo $actuel; ?>?style=index.css"></a></div>
-                </li>
-                <li><a href="catalogue.php">Films</a></li>
-                <li><a href="connexion.php">Connexion</a></li>
-                <li><a href="inscription.php">S'inscrire</a></li>
-                <li><a href="contact.php">Contact</a></li>
-            </ul>
-        </div>
+  </li>
+  <li class="dropdown themes">
+    <a class="a-nav" href="javascript:void(0)" class="dropbtn">Thèmes</a>
+    <div class="dropdown-content">
+      <a class="a-nav" href="<?php echo $actuel; ?>?style=index.css">Orange</a>
+      <a class="a-nav" href="<?php echo $actuel; ?>?style=steven/index3.css">Vert</a>
+      <a class="a-nav" href="<?php echo $actuel; ?>?style=axel/index4.css">Violet</a>
+      <a class="a-nav" href="<?php echo $actuel; ?>?style=pol/index2.css">Rose</a>
+   
     </div>
+  </li>
 </div>
+</ul>
+
 
 <div class="vide"></div>
 
@@ -142,11 +140,13 @@ include ('include/connectBDD.php');
 
 
 <?php 
+
+//ON PREND L'ID DU FILM
+
   $id=$_GET['id'];
-            $req = $bdd ->prepare("SELECT * FROM Film WHERE id_film = $id");
+            $req = $bdd ->prepare("SELECT * FROM Film WHERE id_film =" . $id);
             $req->execute();
-            while($donnees = $req->fetch())
-            
+            $donnees = $req->fetch();       
             {?>
 <h2 class="page-film"><?php echo $donnees['Titre'];?></h2>
 
@@ -194,7 +194,7 @@ include ('include/connectBDD.php');
         Date de sortie
     </div>
 
-
+            <?php }?>
 </div>
 
 
@@ -204,36 +204,23 @@ include ('include/connectBDD.php');
 <div class="acteurs-titre">Acteurs</div>
 
 <section class="liste-acteurs">
-    <div class="acteur">
-        <img class="img-acteur" src="./img/acteur1.jfif" alt="">
-        <div><?php echo $donnees['Nom'];?><?php echo $donnees['Prenom'];?></div>
-    </div>
+<?php
+// ON PREND L'ID DU FILM DANS JOUER ET ID ACTEUR DANS ACTEUR
+$req2=$bdd->prepare("SELECT * FROM jouer WHERE id_film=" . $donnees['id_film']);
+$req2->execute();
+while($req3=$req2->fetch()){
+
+$req4=$bdd->prepare("SELECT * FROM Acteur WHERE id_acteur=" . $req3['id_acteur']);
+$req4->execute();
+while($req5 = $req4->fetch()) { ?>
 
     <div class="acteur">
-        <img class="img-acteur" src="./img/acteur2.jfif" alt="">
-        <div>Park So-dam</div>
+        <img class="img-acteur" src="./img/<?php echo $req5['Image']?>" alt="">
+        <div><?php echo $req5['Nom'];?> <?php echo $req5['Prenom'];?></div>
     </div>
 
-    <div class="acteur">
-        <img class="img-acteur" src="./img/acteur3.jfif" alt="">
-        <div>Choi Woo-sik</div>
-    </div>
-
-    <div class="acteur">
-        <img class="img-acteur" src="./img/acteur4.jfif" alt="">
-        <div>Jung Ji-so</div>
-    </div>
-
-    <div class="acteur">
-        <img class="img-acteur" src="./img/acteur5.jfif" alt="">
-        <div>Song Kang-ho</div>
-    </div>
-
-    <div class="acteur">
-        <img class="img-acteur" src="./img/acteur6.jfif" alt="">
-        <div>Lee Sun Gyun</div>
-    </div>
-
+  
+<?php }} ?>
 </section>
 
 
@@ -242,19 +229,30 @@ include ('include/connectBDD.php');
  <div class="real-real">Réalisateur</div>
 
 <div class="real-ba">
+   <?php  
+$req2=$bdd->prepare("SELECT * FROM realiser WHERE id_film=" . $donnees['id_film']);
+$req2->execute();
+while($req6=$req2->fetch()){
 
+$req7=$bdd->prepare("SELECT * FROM Realisateur WHERE id_realisateur=" . $req6['id_realisateur']);
+$req7->execute();
+while($req8 = $req7->fetch()) {    
+
+$req = $bdd ->prepare("SELECT * FROM Film WHERE id_film = $id");
+$req->execute();
+while($donnees = $req->fetch())
+    
+{?>
 
     
 
     <div class="real">
         <div class="img-real">
-            <img src="./img/real.jfif" alt="">
-            <div>Bong Joon Ho</div>
+            <img src="./img/<?php echo $req8['Image']?>" alt="">
+            <div><?php echo $req8['Nom']?> <?php echo $req8['Prenom']?></div>
         </div>
         <div class="text-real">
-            Pour son film Parasite, il remporte la Palme d'or au festival de Cannes 2019, puis en 2020, le prix du
-            meilleur film en langue étrangère aux Golden Globes, quatre Oscars (meilleur scénario original, meilleur
-            film international, meilleur réalisateur, et meilleur film) et le César du meilleur film étranger.
+            <?php echo $req8['Resume']?>
         </div>
     </div>
 
@@ -264,7 +262,7 @@ include ('include/connectBDD.php');
 
 </div>
 
-        <?php } ?>
+        <?php }}} ?>
 
 
 <!--FOOTER-->

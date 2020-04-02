@@ -1,4 +1,5 @@
 <?php
+session_start();
 header('Content-type: text/html; charset=utf-8');
 require_once 'styleswitcher.php';
 include ('include/connectBDD.php');
@@ -97,43 +98,39 @@ include ('include/connectBDD.php');
         <h1> <a href="index.php"> ALLO SIMPLON</a></h1>
     </div>
 
+  <!--NAV BAR-->
 
-    <!--NAV BAR-->
-
-    <div class="nav-dada">
-        <div class="logo-dada">
-            <h1><a class="lien-home" href="index.php">ALLO SIMPLON</a> </h1>
-        </div>
-        <div class="menu-nav">
-            <form class="search-bar" action="">
-                <input type="text" placeholder="" name="search">
-                <button class="search-button" type="submit"><i class="fa fa-search"></i></button>
-            </form>
-            <div class="menu-dada">
-
-                <ul>
-
-                    <li>
-                        <div class="style_axel"><a href="<?php echo $actuel; ?>?style=axel/index4.css"></a>
-                            <div>
-                    </li>
-                    <li>
-                        <div class="style_pol"><a href="<?php echo $actuel; ?>?style=pol/index2.css"></a></div>
-                    </li>
-                    <li>
-                        <div class="style_steven"><a href="<?php echo $actuel; ?>?style=steven/index3.css"></a></div>
-                    </li>
-                    <li>
-                        <div class="style_ilayda"><a href="<?php echo $actuel; ?>?style=index.css"></a></div>
-                    </li>
-                    <li><a href="catalogue.php">Films</a></li>
-                    <li><a href="connexion.php">Connexion</a></li>
-                    <li><a href="inscription.php">S'inscrire</a></li>
-                    <li><a href="contact.php">Contact</a></li>
-                </ul>
-            </div>
-        </div>
+  <ul class="new-nav">
+    <div class="logo-simplon">
+  <li class="li-nav" ><a class="a-nav" href="index.php">ALLO SIMPLON</a></li></div>
+  
+  <div class="liens-nav">
+  <li class="li-nav"><a class="a-nav" href="catalogue.php">Catalogue</a></li>
+  <li class="li-nav"><a class="a-nav" href="contact.php">Contact</a></li>
+  <li class="dropdown">
+    <a class="a-nav"href="javascript:void(0)" class="dropbtn">Connexion/Inscription</a>
+    <div class="dropdown-content">
+      <a class="a-nav" href="connexion.php">Se connecter</a>
+      <a class="a-nav" href="inscription.php">S'inscrire</a>
+      <a class="a-nav" href="traitement/deconnexion.php">Se déconnecter</a>
+      
+    
+   
     </div>
+  </li>
+  <li class="dropdown themes">
+    <a class="a-nav" href="javascript:void(0)" class="dropbtn">Thèmes</a>
+    <div class="dropdown-content">
+      <a class="a-nav" href="<?php echo $actuel; ?>?style=index.css">Orange</a>
+      <a class="a-nav" href="<?php echo $actuel; ?>?style=steven/index3.css">Vert</a>
+      <a class="a-nav" href="<?php echo $actuel; ?>?style=axel/index4.css">Violet</a>
+      <a class="a-nav" href="<?php echo $actuel; ?>?style=pol/index2.css">Rose</a>
+   
+    </div>
+  </li>
+</div>
+</ul>
+
 
     <div class="vide"></div>
 

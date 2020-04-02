@@ -16,13 +16,11 @@
   
     
 
-    $hashedpass=password_hash($mdp, PASSWORD_DEFAULT);
-
     $sql->execute(array(
         'name_user' => $nom,
         'firstname_user' => $prenom,
         'username' => $pseudo,
-        'password_user' => $hashedpass,
+        'password_user' => $mdp,
         'username_mail' => $mail,
         'type_user' => $type
     ));

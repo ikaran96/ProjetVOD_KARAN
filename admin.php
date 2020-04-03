@@ -99,36 +99,43 @@ require_once 'styleswitcher.php';
     <!--NAV BAR-->
 
     <ul class="new-nav">
-    <div class="logo-simplon">
-  <li class="li-nav" ><a class="a-nav" href="index.php">ALLO SIMPLON</a></li></div>
-  
-  <div class="liens-nav">
-  <li class="li-nav"><a class="a-nav" href="catalogue.php">Catalogue</a></li>
-  <li class="li-nav"><a class="a-nav" href="contact.php">Contact</a></li>
-  <li class="dropdown">
-    <a class="a-nav"href="javascript:void(0)" class="dropbtn">Connexion/Inscription</a>
-    <div class="dropdown-content">
-      <a class="a-nav" href="connexion.php">Se connecter</a>
-      <a class="a-nav" href="inscription.php">S'inscrire</a>
-      <a class="a-nav" href="traitement/deconnexion.php">Se déconnecter</a>
-      
-    
-   
-    </div>
-  </li>
-  <li class="dropdown themes">
-    <a class="a-nav" href="javascript:void(0)" class="dropbtn">Thèmes</a>
-    <div class="dropdown-content">
-      <a class="a-nav" href="<?php echo $actuel; ?>?style=index.css">Orange</a>
-      <a class="a-nav" href="<?php echo $actuel; ?>?style=steven/index3.css">Vert</a>
-      <a class="a-nav" href="<?php echo $actuel; ?>?style=axel/index4.css">Violet</a>
-      <a class="a-nav" href="<?php echo $actuel; ?>?style=pol/index2.css">Rose</a>
-   
-    </div>
-  </li>
-</div>
-</ul>
+        <div class="logo-simplon">
+            <li class="li-nav"><a class="a-nav" href="index.php">ALLO SIMPLON</a></li>
 
+        </div>
+
+        <div class="liens-nav">
+
+     
+            <li class="li-nav"><a class="a-nav" href="catalogue.php">Catalogue</a></li>
+            <li class="li-nav"><a class="a-nav" href="contact.php">Contact</a></li>
+        
+            <li class="dropdown">
+                <a class="a-nav" href="javascript:void(0)" class="dropbtn">Connexion/Inscription</a>
+                <div class="dropdown-content">
+                    <a class="a-nav" href="connexion.php">Se connecter</a>
+                    <a class="a-nav" href="inscription.php">S'inscrire</a>
+                    <a class="a-nav" href="traitement/deconnexion.php">Se déconnecter</a>
+
+                </div>
+            </li>
+            <li class="dropdown themes">
+                <a class="a-nav" href="javascript:void(0)" class="dropbtn">Thèmes</a>
+                <div class="dropdown-content">
+                    <a class="a-nav" href="<?php echo $actuel; ?>?style=index.css">Orange</a>
+                    <a class="a-nav" href="<?php echo $actuel; ?>?style=steven/index3.css">Vert</a>
+                    <a class="a-nav" href="<?php echo $actuel; ?>?style=axel/index4.css">Violet</a>
+                    <a class="a-nav" href="<?php echo $actuel; ?>?style=pol/index2.css">Rose</a>
+
+                </div>
+            </li>
+        </div>
+        <form action="">
+                <input class="search-bar" type="text" placeholder="" name="search">
+                <button class="search-button" type="submit"><i class="fa fa-search"></i></button>
+            </form>
+
+    </ul>
 
 
     <div class="vide"></div>
@@ -209,6 +216,11 @@ require_once 'styleswitcher.php';
 
                 <input class="input-contact" type="text" id="prenom_acteur" name="prenom_acteur" placeholder="Prénom">
 
+                <input class="input-contact" type="text" id="origine_acteur" name="origine_acteur" placeholder="Origine">
+
+
+                <input class="input-contact" type="text" id="img_acteur" name="img_acteur" placeholder="Image">
+
 
                 <div class="button">
                     <button class="button_form" type="submit">Envoyer</button>
@@ -235,6 +247,10 @@ require_once 'styleswitcher.php';
 
 
                 <input class="input-contact" type="text" id="prenom_real" name="prenom_real" placeholder="Prénom">
+
+                <input class="input-contact" type="text" id="img_real" name="img_real" placeholder="Nom">
+
+                <input class="input-contact" type="text" id="resume_real" name="resume_real" placeholder="Nom">
 
 
                 <div class="button">
@@ -401,12 +417,12 @@ require_once 'styleswitcher.php';
                 <select name="id_realisateur" require >
 
                     <?php
-                $req3 = $bdd->prepare(" SELECT id_realisateur, Nom, Prenom FROM Realisateur ");
+                $req3 = $bdd->prepare(" SELECT id_realisateur, Nom_real, Prenom_real FROM Realisateur ");
                 $req3->execute();
 
                 while ( $donnees = $req3->fetch() ){ ?>
 
-                    <option value="<?= $donnees['id_realisateur']; ?>"> <?= $donnees['Nom']; ?> <?= $donnees['Prenom']; ?> </option>
+                    <option value="<?= $donnees['id_realisateur']; ?>"> <?= $donnees['Nom_real']; ?> <?= $donnees['Prenom_real']; ?> </option>
                     <?php  }
              ?>
                 </select>
@@ -477,7 +493,7 @@ require_once 'styleswitcher.php';
             <h3 class="relations-titre">Ajouter des genres à des films</h3>
 
             <fieldset>
-                <select name="id_genre" require>
+                <select name="id_film" require>
                     <?php
                 include ('include/connectBDD.php');
 

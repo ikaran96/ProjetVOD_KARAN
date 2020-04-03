@@ -93,39 +93,46 @@ require_once 'styleswitcher.php';
 </div>
 
 
-  <!--NAV BAR-->
+ <!--NAV BAR-->
 
-  <ul class="new-nav">
-    <div class="logo-simplon">
-  <li class="li-nav" ><a class="a-nav" href="index.php">ALLO SIMPLON</a></li></div>
-  
-  <div class="liens-nav">
-  <li class="li-nav"><a class="a-nav" href="catalogue.php">Catalogue</a></li>
-  <li class="li-nav"><a class="a-nav" href="contact.php">Contact</a></li>
-  <li class="dropdown">
-    <a class="a-nav"href="javascript:void(0)" class="dropbtn">Connexion/Inscription</a>
-    <div class="dropdown-content">
-      <a class="a-nav" href="connexion.php">Se connecter</a>
-      <a class="a-nav" href="inscription.php">S'inscrire</a>
-      <a class="a-nav" href="traitement/deconnexion.php">Se déconnecter</a>
-      
-    
-   
-    </div>
-  </li>
-  <li class="dropdown themes">
-    <a class="a-nav" href="javascript:void(0)" class="dropbtn">Thèmes</a>
-    <div class="dropdown-content">
-      <a class="a-nav" href="<?php echo $actuel; ?>?style=index.css">Orange</a>
-      <a class="a-nav" href="<?php echo $actuel; ?>?style=steven/index3.css">Vert</a>
-      <a class="a-nav" href="<?php echo $actuel; ?>?style=axel/index4.css">Violet</a>
-      <a class="a-nav" href="<?php echo $actuel; ?>?style=pol/index2.css">Rose</a>
-   
-    </div>
-  </li>
-</div>
-</ul>
+ <ul class="new-nav">
+        <div class="logo-simplon">
+            <li class="li-nav"><a class="a-nav" href="index.php">ALLO SIMPLON</a></li>
 
+        </div>
+
+        <div class="liens-nav">
+
+     
+            <li class="li-nav"><a class="a-nav" href="catalogue.php">Catalogue</a></li>
+            <li class="li-nav"><a class="a-nav" href="contact.php">Contact</a></li>
+        
+            <li class="dropdown">
+                <a class="a-nav" href="javascript:void(0)" class="dropbtn">Connexion/Inscription</a>
+                <div class="dropdown-content">
+                    <a class="a-nav" href="connexion.php">Se connecter</a>
+                    <a class="a-nav" href="inscription.php">S'inscrire</a>
+                    <a class="a-nav" href="traitement/deconnexion.php">Se déconnecter</a>
+
+                </div>
+            </li>
+            <li class="dropdown themes">
+                <a class="a-nav" href="javascript:void(0)" class="dropbtn">Thèmes</a>
+                <div class="dropdown-content">
+                    <a class="a-nav" href="<?php echo $actuel; ?>?style=index.css">Orange</a>
+                    <a class="a-nav" href="<?php echo $actuel; ?>?style=steven/index3.css">Vert</a>
+                    <a class="a-nav" href="<?php echo $actuel; ?>?style=axel/index4.css">Violet</a>
+                    <a class="a-nav" href="<?php echo $actuel; ?>?style=pol/index2.css">Rose</a>
+
+                </div>
+            </li>
+        </div>
+        <form action="">
+                <input class="search-bar" type="text" placeholder="" name="search">
+                <button class="search-button" type="submit"><i class="fa fa-search"></i></button>
+            </form>
+
+    </ul>
 
 <div class="vide"></div>
 

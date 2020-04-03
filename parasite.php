@@ -12,7 +12,13 @@ include ('include/connectBDD.php');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Parasite</title>
+    <?php 
+  $id=$_GET['id'];
+            $req3 = $bdd ->prepare("SELECT * FROM Film WHERE id_film =" . $id);
+            $req3->execute();
+            $donnees3 = $req3->fetch();       
+            {?>
+    <title><?php echo $donnees3['Titre'];?></title>
 
     <!--SLICK-->
 
@@ -47,99 +53,110 @@ include ('include/connectBDD.php');
 </head>
 
 <body>
-<!--TOGGLE MOBILE-->
+    <!--TOGGLE MOBILE-->
 
-<div class="menu-wrap">
-    <input type="checkbox" class="toggler">
-    <div class="hamburger">
-        <div></div>
-    </div>
-    <div class="menu">
-        <div>
+    <div class="menu-wrap">
+        <input type="checkbox" class="toggler">
+        <div class="hamburger">
+            <div></div>
+        </div>
+        <div class="menu">
             <div>
-                <ul>
-                    <Li><a href="catalogue.php">Films</a></Li>
-                    <Li><a href="connexion.php">Connexion</a></Li>
-                    <Li><a href="contact.php">Contact</a></Li>
+                <div>
+                    <ul>
+                        <Li><a href="catalogue.php">Films</a></Li>
+                        <Li><a href="connexion.php">Connexion</a></Li>
+                        <Li><a href="contact.php">Contact</a></Li>
                         <div class="liens-couleurs">
 
-                    <li>
-                        <div class="style_axel"><a href="<?php echo $actuel; ?>?style=../css/index.css"></a>
-                            <div>
-                    </li>
-                    <li>
-                        <div class="style_pol"><a href="<?php echo $actuel; ?>?style=../pol/index2.css"></a></div>
-                    </li>
-                    <li>
-                        <div class="style_steven"><a href="<?php echo $actuel; ?>?style=../steven/index3.css"></a></div>
-                    </li>
-                    <li>
-                        <div class="style_ilayda"><a href="<?php echo $actuel; ?>?style=../axel/index4.css"></a></div>
-                    </li>
-                    </div>
+                            <li>
+                                <div class="style_axel"><a href="<?php echo $actuel; ?>?style=../css/index.css"></a>
+                                    <div>
+                            </li>
+                            <li>
+                                <div class="style_pol"><a href="<?php echo $actuel; ?>?style=../pol/index2.css"></a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="style_steven"><a
+                                        href="<?php echo $actuel; ?>?style=../steven/index3.css"></a></div>
+                            </li>
+                            <li>
+                                <div class="style_ilayda"><a href="<?php echo $actuel; ?>?style=../axel/index4.css"></a>
+                                </div>
+                            </li>
+                        </div>
 
 
 
-                    <form action="">
-                        <input type="text" placeholder="" name="search">
-                        <button class="search-button" type="submit"><i class="fa fa-search"></i></button>
-                    </form>
+                        <form action="">
+                            <input type="text" placeholder="" name="search">
+                            <button class="search-button" type="submit"><i class="fa fa-search"></i></button>
+                        </form>
 
-                </ul>
+                    </ul>
+                </div>
             </div>
         </div>
+
     </div>
 
-</div>
 
+    <!--TITRE-->
 
-<!--TITRE-->
-
-<div class="title-dada">
-    <h1> <a href="index.php"> ALLO SIMPLON</a></h1>
-</div>
-
-
-  <!--NAV BAR-->
-
-  <ul class="new-nav">
-    <div class="logo-simplon">
-  <li class="li-nav" ><a class="a-nav" href="index.php">ALLO SIMPLON</a></li></div>
-  
-  <div class="liens-nav">
-  <li class="li-nav"><a class="a-nav" href="catalogue.php">Catalogue</a></li>
-  <li class="li-nav"><a class="a-nav" href="contact.php">Contact</a></li>
-  <li class="dropdown">
-    <a class="a-nav"href="javascript:void(0)" class="dropbtn">Connexion/Inscription</a>
-    <div class="dropdown-content">
-      <a class="a-nav" href="connexion.php">Se connecter</a>
-      <a class="a-nav" href="inscription.php">S'inscrire</a>
-      <a class="a-nav" href="traitement/deconnexion.php">Se déconnecter</a>
-      
-    
-   
+    <div class="title-dada">
+        <h1> <a href="index.php"> ALLO SIMPLON</a></h1>
     </div>
-  </li>
-  <li class="dropdown themes">
-    <a class="a-nav" href="javascript:void(0)" class="dropbtn">Thèmes</a>
-    <div class="dropdown-content">
-      <a class="a-nav" href="<?php echo $actuel; ?>?style=index.css">Orange</a>
-      <a class="a-nav" href="<?php echo $actuel; ?>?style=steven/index3.css">Vert</a>
-      <a class="a-nav" href="<?php echo $actuel; ?>?style=axel/index4.css">Violet</a>
-      <a class="a-nav" href="<?php echo $actuel; ?>?style=pol/index2.css">Rose</a>
-   
-    </div>
-  </li>
-</div>
-</ul>
 
 
-<div class="vide"></div>
+    <!--NAV BAR-->
+
+    <ul class="new-nav">
+        <div class="logo-simplon">
+            <li class="li-nav"><a class="a-nav" href="index.php">ALLO SIMPLON</a></li>
+
+        </div>
+
+        <div class="liens-nav">
+
+     
+            <li class="li-nav"><a class="a-nav" href="catalogue.php">Catalogue</a></li>
+            <li class="li-nav"><a class="a-nav" href="contact.php">Contact</a></li>
+        
+            <li class="dropdown">
+                <a class="a-nav" href="javascript:void(0)" class="dropbtn">Connexion/Inscription</a>
+                <div class="dropdown-content">
+                    <a class="a-nav" href="connexion.php">Se connecter</a>
+                    <a class="a-nav" href="inscription.php">S'inscrire</a>
+                    <a class="a-nav" href="traitement/deconnexion.php">Se déconnecter</a>
+
+                </div>
+            </li>
+            <li class="dropdown themes">
+                <a class="a-nav" href="javascript:void(0)" class="dropbtn">Thèmes</a>
+                <div class="dropdown-content">
+                    <a class="a-nav" href="<?php echo $actuel; ?>?style=index.css">Orange</a>
+                    <a class="a-nav" href="<?php echo $actuel; ?>?style=steven/index3.css">Vert</a>
+                    <a class="a-nav" href="<?php echo $actuel; ?>?style=axel/index4.css">Violet</a>
+                    <a class="a-nav" href="<?php echo $actuel; ?>?style=pol/index2.css">Rose</a>
+
+                </div>
+            </li>
+        </div>
+        <form action="">
+                <input class="search-bar" type="text" placeholder="" name="search">
+                <button class="search-button" type="submit"><i class="fa fa-search"></i></button>
+            </form>
+
+    </ul>
+
+
+    <div class="vide"></div>
 
 
 
 
-<?php 
+    <?php 
 
 //ON PREND L'ID DU FILM
 
@@ -148,63 +165,63 @@ include ('include/connectBDD.php');
             $req->execute();
             $donnees = $req->fetch();       
             {?>
-<h2 class="page-film"><?php echo $donnees['Titre'];?></h2>
+    <h2 class="page-film"><?php echo $donnees['Titre'];?></h2>
 
     <!--SYNOPSIS-->
 
     <div class="img-resume">
         <img class="img-film" src="./img/parasite.jpg" alt="">
-        
+
         <div class="synop">
-                <p class="synop-title">Synopsis</p>
-                <?php echo $donnees['Synopsis'];?>
+            <p class="synop-title">Synopsis</p>
+            <?php echo $donnees['Synopsis'];?>
         </div>
     </div>
 
 
-<!--INFO FILM-->
+    <!--INFO FILM-->
 
 
-<div class="rond-titre">Résumé</div>
+    <div class="rond-titre">Résumé</div>
 
-<h3 class="info-film"></h3>
+    <h3 class="info-film"></h3>
 
-<div class="ronds-info">
+    <div class="ronds-info">
 
-    <div class="ronds-bis">
-        <div class="ronds-ronds">
-           <?php echo $donnees['Duree'];?>
+        <div class="ronds-bis">
+            <div class="ronds-ronds">
+                <?php echo $donnees['Duree'];?>
+            </div>
+            Durée
         </div>
-        Durée
+
+
+        <div class="ronds-bis">
+            <div class="ronds-ronds">
+                <?php echo $donnees['Note'];?>/5
+            </div>
+            Note
+        </div>
+
+
+        <div class="ronds-bis">
+            <div class="ronds-ronds">
+                <?php echo $donnees['Sortie'];?>
+            </div>
+            Date de sortie
+        </div>
+
+        <?php }}?>
     </div>
 
 
-    <div class="ronds-bis">
-        <div class="ronds-ronds">
-        <?php echo $donnees['Note'];?>/5
-        </div>
-        Note
-    </div>
+    <!--Liste acteurs-->
 
 
-    <div class="ronds-bis">
-        <div class="ronds-ronds">
-        <?php echo $donnees['Sortie'];?>
-        </div>
-        Date de sortie
-    </div>
+    <div class="acteurs-titre">Acteurs</div>
 
-            <?php }?>
-</div>
-
-
-<!--Liste acteurs-->
-
-
-<div class="acteurs-titre">Acteurs</div>
-
-<section class="liste-acteurs">
-<?php
+    <section class="liste-acteurs">
+        <?php
 // ON PREND L'ID DU FILM DANS JOUER ET ID ACTEUR DANS ACTEUR
 $req2=$bdd->prepare("SELECT * FROM jouer WHERE id_film=" . $donnees['id_film']);
 $req2->execute();
@@ -214,22 +231,22 @@ $req4=$bdd->prepare("SELECT * FROM Acteur WHERE id_acteur=" . $req3['id_acteur']
 $req4->execute();
 while($req5 = $req4->fetch()) { ?>
 
-    <div class="acteur">
-        <img class="img-acteur" src="./img/<?php echo $req5['Image']?>" alt="">
-        <div><?php echo $req5['Nom'];?> <?php echo $req5['Prenom'];?></div>
-    </div>
-
-  
-<?php }} ?>
-</section>
+        <div class="acteur">
+            <img class="img-acteur" src="./img/<?php echo $req5['image_acteur']?>" alt="">
+            <div><?php echo $req5['Nom'];?> <?php echo $req5['Prenom'];?></div>
+        </div>
 
 
- <!--REAL BA-->
+        <?php }} ?>
+    </section>
 
- <div class="real-real">Réalisateur</div>
 
-<div class="real-ba">
-   <?php  
+    <!--REAL BA-->
+
+    <div class="real-real">Réalisateur</div>
+
+    <div class="real-ba">
+        <?php  
 $req2=$bdd->prepare("SELECT * FROM realiser WHERE id_film=" . $donnees['id_film']);
 $req2->execute();
 while($req6=$req2->fetch()){
@@ -244,72 +261,72 @@ while($donnees = $req->fetch())
     
 {?>
 
-    
 
-    <div class="real">
-        <div class="img-real">
-            <img src="./img/<?php echo $req8['Image']?>" alt="">
-            <div><?php echo $req8['Nom']?> <?php echo $req8['Prenom']?></div>
+
+        <div class="real">
+            <div class="img-real">
+                <img src="./img/<?php echo $req8['Image']?>" alt="">
+                <div><?php echo $req8['Nom']?> <?php echo $req8['Prenom']?></div>
+            </div>
+            <div class="text-real">
+                <?php echo $req8['Resume']?>
+            </div>
         </div>
-        <div class="text-real">
-            <?php echo $req8['Resume']?>
+
+        <div class="ba-yt">
+            <?php echo $donnees['BA'];?>
         </div>
+
     </div>
 
-    <div class="ba-yt">
-    <?php echo $donnees['BA'];?>
-    </div>
-
-</div>
-
-        <?php }}} ?>
+    <?php }}} ?>
 
 
-<!--FOOTER-->
+    <!--FOOTER-->
 
-<footer>
-    <div class="col-footer">
-        <div class="sous-footer">
-            <p>
-                <h3 class="title-footer">A propos d'Allo Simplon</h3>
-                   <a class="liens-footer" href="#">Qui sommes-nous ?</a> <br>
-                   <a class="liens-footer" href=""> Allo Simplon recrute </a> <br>
-                   <a class="liens-footer" href=""> Contactez-nous </a> <br>
-            </p>
+    <footer>
+        <div class="col-footer">
+            <div class="sous-footer">
+                <p>
+                    <h3 class="title-footer">A propos d'Allo Simplon</h3>
+                    <a class="liens-footer" href="#">Qui sommes-nous ?</a> <br>
+                    <a class="liens-footer" href=""> Allo Simplon recrute </a> <br>
+                    <a class="liens-footer" href=""> Contactez-nous </a> <br>
+                </p>
+            </div>
+
+            <div class="sous-footer">
+
+                <p>
+                    <h3 class="title-footer">Aide</h3>
+                    <a class="liens-footer" href=""> Mon compte</a> <br>
+                    <a class="liens-footer" href=""> Forfaits </a><br>
+                    <a class="liens-footer" href=""> Facturation</a> <br>
+
+
+
+                </p>
+
+            </div>
+
+            <div class="sous-footer">
+
+                <p>
+                    <h3 class="title-footer">Mentions</h3>
+                    <a class="liens-footer" href=""> Mentions légales </a> <br>
+                    <a class="liens-footer" href=""> Conditions d'utlisation </a> <br>
+                    <a class="liens-footer" href="">Confidentialité</a> <br>
+
+
+                </p>
+            </div>
         </div>
 
-        <div class="sous-footer">
 
-            <p>
-                <h3 class="title-footer">Aide</h3>
-                   <a class="liens-footer" href=""> Mon compte</a> <br>
-                   <a class="liens-footer" href=""> Forfaits </a><br> 
-                   <a class="liens-footer" href=""> Facturation</a> <br>
+        <div class="copy">© 2020 Allo Simplon Tous droits réservés.</div>
 
+    </footer>
 
-
-            </p>
-
-        </div>
-
-        <div class="sous-footer">
-
-            <p>
-                <h3 class="title-footer">Mentions</h3>
-               <a class="liens-footer" href=""> Mentions légales </a> <br>
-                <a class="liens-footer" href=""> Conditions d'utlisation </a> <br> 
-               <a class="liens-footer" href="">Confidentialité</a>  <br>
-
-
-            </p>
-        </div>
-    </div>
-
-
-    <div class="copy">© 2020 Allo Simplon Tous droits réservés.</div>
-
-</footer>
-   
 </body>
 
 </html>

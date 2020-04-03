@@ -600,7 +600,17 @@ FOOTER {
     .title-dada{
         display:none;
     }
+    
 /*----------------------------------------------------------NAV BAR----------------------------------------------------------*/
+
+
+
+.search-bar{
+    display:inline-block;
+    width:10%;
+    border: 5px solid #55557E;
+    margin-top:20px;
+   }
 
 .new-nav {
     display:block;

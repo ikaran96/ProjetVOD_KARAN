@@ -22,11 +22,4 @@
         $_SESSION['id_user'] = $member['id_user'];
         $_SESSION['Pseudo'] = $member['Pseudo'];
         $_SESSION['Mdp'] = $member['Mdp'];
-        $_SESSION['id_typeuser'] = $member['id_typeuser'];
-        header('location: ../admin.php');
-        } else {
-            header('location:../connexion.php?error=marchepas');
-        }
-    }
-    
-?>
+        $_SESSION['id_typeuser

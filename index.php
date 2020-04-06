@@ -133,6 +133,7 @@ include ('include/connectBDD.php');
                     <a class="a-nav" href="connexion.php">Se connecter</a>
                     <a class="a-nav" href="inscription.php">S'inscrire</a>
                     <a class="a-nav" href="traitement/deconnexion.php">Se déconnecter</a>
+                    <a class="a-nav" href="admin.php">Admin</a>
 
                 </div>
             </li>

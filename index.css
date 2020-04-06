@@ -1630,3 +1630,58 @@ select{
 .req-res > .modif-h2{
     color:black;
 }
+
+
+
+/*----------------------------PAGE ACTEUR-----------------------------*/
+
+.acteur-info{
+    text-align:center;
+}
+
+.film-acteur{
+    margin-bottom:50px;
+}
+
+.origine-acteur{
+    color:white;
+    font-family:'Ubuntu',Arial, Helvetica, sans-serif;
+    margin-bottom:20px;
+}
+
+.tete-acteur{
+    margin-left:auto;
+    margin-right:auto;
+    border-radius:25px;
+    text-align: center;
+    height:300px;
+    margin-bottom:20px;
+}
+
+.page-acteur{
+    color:#FF7200;
+    font-size:20px;
+    font-weight:900;
+    font-family:'Baloo Tammudu 2',Arial, Helvetica, sans-serif;
+    margin-bottom:20px;
+}
+
+.titrefilm > a {
+    text-decoration: none;
+    color:white;
+    font-family:'Ubuntu',Arial, Helvetica, sans-serif;
+}
+
+.titrefilm > a:hover {
+    color:#FF7200;
+}
+
+.lien-acteur{
+    color:white;
+    text-decoration:none;
+    font-family:'Ubuntu',Arial, Helvetica, sans-serif;
+}
+
+.lien-acteur:hover{
+    color:#FF7200;
+}

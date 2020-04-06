@@ -129,6 +129,7 @@ include ('include/connectBDD.php');
                     <a class="a-nav" href="connexion.php">Se connecter</a>
                     <a class="a-nav" href="inscription.php">S'inscrire</a>
                     <a class="a-nav" href="traitement/deconnexion.php">Se déconnecter</a>
+                    <a class="a-nav" href="admin.php">Admin</a>
 
                 </div>
             </li>
@@ -233,7 +234,7 @@ while($req5 = $req4->fetch()) { ?>
 
         <div class="acteur">
             <img class="img-acteur" src="./img/<?php echo $req5['image_acteur']?>" alt="">
-            <div><?php echo $req5['Nom'];?> <?php echo $req5['Prenom'];?></div>
+            <div><a class="lien-acteur" href="acteur.php?id=<?php echo $req5['id_acteur'];?>"><?php echo $req5['Nom'];?> <?php echo $req5['Prenom'];?></a> </div>
         </div>
 
 
@@ -265,11 +266,11 @@ while($donnees = $req->fetch())
 
         <div class="real">
             <div class="img-real">
-                <img src="./img/<?php echo $req8['Image']?>" alt="">
-                <div><?php echo $req8['Nom']?> <?php echo $req8['Prenom']?></div>
+                <img src="./img/<?php echo $req8['Image_real']?>" alt="">
+                <div><?php echo $req8['Nom_real']?> <?php echo $req8['Prenom_real']?></div>
             </div>
             <div class="text-real">
-                <?php echo $req8['Resume']?>
+                <?php echo $req8['Resume_real']?>
             </div>
         </div>
 

@@ -109,6 +109,7 @@ include ('include/connectBDD.php');
     </div>
 
 
+ 
     <!--NAV BAR-->
 
     <ul class="new-nav">
@@ -124,14 +125,25 @@ include ('include/connectBDD.php');
             <li class="li-nav"><a class="a-nav" href="contact.php">Contact</a></li>
         
             <li class="dropdown">
+            <?php  if(isset($_SESSION['Pseudo'])){?>
+                <a class="a-nav" href="javascript:void(0)" class="dropbtn">Hello <?php echo $_SESSION['Pseudo'];?></a>
+                <div class="dropdown-content">
+                    <a class="a-nav" href="traitement/deconnexion.php">Se déconnecter</a>
+                    <a class="a-nav" href="admin.php">Admin</a>
+                </div>
+
+               <?php }else{                  
+
+                ?>          
+
+                
                 <a class="a-nav" href="javascript:void(0)" class="dropbtn">Connexion/Inscription</a>
                 <div class="dropdown-content">
                     <a class="a-nav" href="connexion.php">Se connecter</a>
                     <a class="a-nav" href="inscription.php">S'inscrire</a>
-                    <a class="a-nav" href="traitement/deconnexion.php">Se déconnecter</a>
-                    <a class="a-nav" href="admin.php">Admin</a>
 
                 </div>
+               <?php }?>
             </li>
             <li class="dropdown themes">
                 <a class="a-nav" href="javascript:void(0)" class="dropbtn">Thèmes</a>

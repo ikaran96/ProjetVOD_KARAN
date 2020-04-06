@@ -93,9 +93,9 @@ require_once 'styleswitcher.php';
 </div>
 
 
- <!--NAV BAR-->
+    <!--NAV BAR-->
 
- <ul class="new-nav">
+    <ul class="new-nav">
         <div class="logo-simplon">
             <li class="li-nav"><a class="a-nav" href="index.php">ALLO SIMPLON</a></li>
 
@@ -108,14 +108,25 @@ require_once 'styleswitcher.php';
             <li class="li-nav"><a class="a-nav" href="contact.php">Contact</a></li>
         
             <li class="dropdown">
+            <?php  if(isset($_SESSION['Pseudo'])){?>
+                <a class="a-nav" href="javascript:void(0)" class="dropbtn">Hello <?php echo $_SESSION['Pseudo'];?></a>
+                <div class="dropdown-content">
+                    <a class="a-nav" href="traitement/deconnexion.php">Se déconnecter</a>
+                    <a class="a-nav" href="admin.php">Admin</a>
+                </div>
+
+               <?php }else{                  
+
+                ?>          
+
+                
                 <a class="a-nav" href="javascript:void(0)" class="dropbtn">Connexion/Inscription</a>
                 <div class="dropdown-content">
                     <a class="a-nav" href="connexion.php">Se connecter</a>
                     <a class="a-nav" href="inscription.php">S'inscrire</a>
-                    <a class="a-nav" href="traitement/deconnexion.php">Se déconnecter</a>
-                    <a class="a-nav" href="admin.php">Admin</a>
 
                 </div>
+               <?php }?>
             </li>
             <li class="dropdown themes">
                 <a class="a-nav" href="javascript:void(0)" class="dropbtn">Thèmes</a>
@@ -135,7 +146,8 @@ require_once 'styleswitcher.php';
 
     </ul>
 
-<div class="vide"></div>
+
+    <div class="vide"></div>
 
 
   <!--------------------------------------zone de connexion------------------------->

@@ -73,10 +73,10 @@ require_once 'styleswitcher.php';
 
 
 
-                    <form action="">
-                        <input type="text" placeholder="" name="search">
-                        <button class="search-button" type="submit"><i class="fa fa-search"></i></button>
-                    </form>
+                    <form id="searchform" action="search.php" method="GET">
+                <input class="search-bar" type="text" placeholder="Rechercher" name="search">
+                <button class="search-button" type="submit"><i class="fa fa-search"></i></button>
+            </form>
 
                 </ul>
             </div>

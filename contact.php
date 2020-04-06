@@ -3,6 +3,7 @@
 session_start();
 header('Content-type: text/html; charset=utf-8');
 require_once 'styleswitcher.php';
+include ('include/connectBDD.php');
 
 ?>
 
@@ -136,8 +137,8 @@ require_once 'styleswitcher.php';
                 </div>
             </li>
         </div>
-        <form action="">
-                <input class="search-bar" type="text" placeholder="" name="search">
+        <form id="searchform" action="search.php" method="GET">
+                <input class="search-bar" type="text" placeholder="Rechercher" name="search">
                 <button class="search-button" type="submit"><i class="fa fa-search"></i></button>
             </form>
 

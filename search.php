@@ -6,14 +6,21 @@ include ('include/connectBDD.php');
 ?>
 
 
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catalogue</title>
+        <title>Recherche</title>
+ 
+
+    <!--SLICK-->
+
+    <link rel="stylesheet" type="text/css" href="slick\slick\slick.css" />
+    <link rel="stylesheet" type="text/css" href="slick\slick\slick-theme.css" />
+
+    <!--CSS-->
 
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" media="screen, projection" type="text/css" id="css" href="<?php echo $url; ?>" />
@@ -35,12 +42,13 @@ include ('include/connectBDD.php');
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/parallax.js/1.4.2/parallax.min.js"></script>
 
 
 </head>
+
+
+
 
 <body>
     <!--TOGGLE MOBILE-->
@@ -79,10 +87,10 @@ include ('include/connectBDD.php');
 
 
 
-                        <form action="">
-                            <input type="text" placeholder="" name="search">
-                            <button class="search-button" type="submit"><i class="fa fa-search"></i></button>
-                        </form>
+                        <form id="searchform" action="search.php" method="GET">
+                <input class="search-bar" type="text" placeholder="Rechercher" name="search">
+                <button class="search-button" type="submit"><i class="fa fa-search"></i></button>
+            </form>
 
                     </ul>
                 </div>
@@ -97,6 +105,7 @@ include ('include/connectBDD.php');
     <div class="title-dada">
         <h1> <a href="index.php"> ALLO SIMPLON</a></h1>
     </div>
+
 
     <!--NAV BAR-->
 
@@ -144,92 +153,46 @@ include ('include/connectBDD.php');
                 </div>
             </li>
         </div>
-        <form id="searchform" action="search.php" method="GET">
+        <form id="searchform" action="search.php?go" method="post">
                 <input class="search-bar" type="text" placeholder="Rechercher" name="search">
                 <button class="search-button" type="submit"><i class="fa fa-search"></i></button>
             </form>
 
     </ul>
 
-
     <div class="vide"></div>
 
+<?php
+if(isset($_GET['search']) AND !empty($_GET['search'])) {
+    $search = htmlspecialchars($_GET['search']);
+    $req2 = $bdd->prepare('  SELECT f.id_film, f.Titre, f.Affiche
+                            FROM Film f
+                            WHERE f.Titre LIKE "%'.$search.'%"');
+    $req2->execute();
 
-    <!--NOS FILMS-->
+?>
+    <h3 class="result-rech">Résultats de votre recherche</h3>
+<div class="search-result">
+<?php if($req2->rowCount()>0): ?>
 
-
-    <h2 class="axeltitreh2">Nos films</h2>
-
-    <div class="axelcontainer">
-
-        <!--FILTRES-->
-
-        <div class="axelgauche">
-            <h5 class="axelH5">Filtres</h5>
-            <h5 class="axelgenre">Genre</h5>
-            <?php 
-            $filtres = $bdd ->prepare("SELECT * FROM Genre ");
-            $filtres->execute();
-            while($filtresresult = $filtres->fetch()){ ?>
-
-            <div class="axelcase">
-                <input type="checkbox" id="coding" name="" value="">
-                <label for="coding"><?php echo $filtresresult['genre'];?></label>
-            </div>
-
-            <?php }?>
-           
-        </div>
-
-
-        <!--CATALOGUE FILMS-->
-
-        <div class="axeldroite">
-            <?php 
-            $req = $bdd ->prepare("SELECT * FROM Film");
-            $req->execute();
-            while($donnees = $req->fetch()){?>
-
-            <a href="parasite.php?id=<?php echo $donnees['id_film'];?>" class="versfilm">
+<?php while ($donnees = $req2->fetch()): ?>
+    <a href="parasite.php?id=<?php echo $donnees['id_film'];?>" class="versfilm">
                 <div class="cardaxel">
                     <img class="poster-img" src="img/<?php echo $donnees['Affiche'];?>" alt="">
                     <div class="titrefilm"><?php echo $donnees['Titre'];?></div>
-                    <div class="infoaxel">
-                        <div class="textaxel">
-                            <p><?php echo $donnees['Note'];?>/5</p>
-                            <p><?php echo $donnees['Duree'];?></p>
-
-
-                            <?php 
-                            $req2 = $bdd ->prepare("SELECT f.id_film, f.Titre, f.Affiche, f.Note, f.Duree, g.id_genre, g.genre, e.id_film, e.id_genre
-                                                    FROM Film f, Genre g, est2 e 
-                                                    WHERE e.id_genre = g.id_genre
-                                                    AND e.id_film = f.id_film
-                                                    AND e.id_film =" . $donnees['id_film']);
-                            $req2->execute();
-                            while($donnees2 = $req2->fetch()){ 
-                            ?>
-
-                            <p><?php echo $donnees2['genre'];?></p><?php }?>
-
-                           
-                        </div>
-                    </div>
                 </div>
             </a>
+<?php endwhile ?>
+<?php else: ?>
+    <h3 class="result-rech">Aucun Résultat</h3>
+<?php endif ?>
 
-            <?php }?>
-            
-        </div>
-
-
+<?php 
+// end of if
+}
+?>
     </div>
 
-
-
-    <!--PARALLAX-->
-
-    <div class="parallax-window" data-parallax="scroll" data-z-index="2" data-image-src=".\img\parallax2.jpg"></div>
 
 
     <!--FOOTER-->
@@ -276,6 +239,7 @@ include ('include/connectBDD.php');
         <div class="copy">© 2020 Allo Simplon Tous droits réservés.</div>
 
     </footer>
+
 </body>
 
 </html>

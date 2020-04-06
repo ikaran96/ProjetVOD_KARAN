@@ -1685,3 +1685,32 @@ select{
 .lien-acteur:hover{
     color:#FF7200;
 }
+
+/*----------------------RECHERCHE---------------------*/
+
+
+.result-rech{
+    color:#FF7200;
+    size:80px;
+    font-family:'Ubuntu',Arial, Helvetica, sans-serif;
+    font-weight:900;
+    text-align: center;
+    margin-bottom:50px;
+}
+
+.search-result{
+    width:100%;
+    text-align:center;
+    display:flex;
+    justify-content: center;
+    margin-bottom:50px;
+    flex-wrap: wrap;
+}
+
+@media only screen and (min-width:1000px){
+    .result-rech{
+        margin-top:60px;
+        font-size:50px;
+    }
+
+}

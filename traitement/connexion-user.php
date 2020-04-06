@@ -5,21 +5,23 @@
     $username = !empty($_POST['username']) ? $_POST['username'] : NULL;
     $password = !empty($_POST['password_user']) ? $_POST['password_user'] : NULL;
 
-    $user = $bdd->prepare ('SELECT * FROM User WHERE Pseudo="'.$username.'"');
-    $user ->execute();
+    $user = $bdd->prepare ('SELECT * FROM User WHERE Pseudo=:username');
+    $user ->execute(array(
+        'username'=>$username
+    ));
     
-    $member = $user->fetch();
+    $ok = $user->fetch();
 
-    $mdpval = password_verify($password, $member['Mdp']);
+    if(isset($ok['Pseudo'])){
+        if($ok['Mdp']==$password){
+            session_start();
+            $_SESSION['id_user']=$ok['id_user'];
+            $_SESSION['Pseudo']=$username;
+            header('location:../admin.php');
+                }
+                else{
+                    echo "mauvais mdp";
+                }}
+    
 
-
-
-    if (!$member) {
-        header('location:../connexion.php?error=login');
-    } else {
-        if ($mdpval) {
-        session_start();
-        $_SESSION['id_user'] = $member['id_user'];
-        $_SESSION['Pseudo'] = $member['Pseudo'];
-        $_SESSION['Mdp'] = $member['Mdp'];
-        $_SESSION['id_typeuser
+?>

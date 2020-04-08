@@ -108,14 +108,25 @@ require_once 'styleswitcher.php';
             <li class="li-nav"><a class="a-nav" href="contact.php">Contact</a></li>
         
             <li class="dropdown">
-            <?php  if(isset($_SESSION['Pseudo'])){?>
+            <?php  if(isset($_SESSION['Pseudo'])) {
+                $_SESSION['id_typeuser']='2';?>
                 <a class="a-nav" href="javascript:void(0)" class="dropbtn">Hello <?php echo $_SESSION['Pseudo'];?></a>
                 <div class="dropdown-content">
                     <a class="a-nav" href="traitement/deconnexion.php">Se déconnecter</a>
                     <a class="a-nav" href="admin.php">Admin</a>
                 </div>
 
-               <?php }else{                  
+            <?php } if(isset($_SESSION['Pseudo'])) {
+                $_SESSION['id_typeuser']='4';?>
+                                <div class="dropdown-content">
+                    <a class="a-nav" href="traitement/deconnexion.php">Se déconnecter</a>
+                    <a class="a-nav" href="admin.php">Dashboard</a>
+                </div>
+
+               
+  
+               <?php }else{ 
+   
 
                 ?>          
 
@@ -139,8 +150,8 @@ require_once 'styleswitcher.php';
                 </div>
             </li>
         </div>
-        <form action="">
-                <input class="search-bar" type="text" placeholder="" name="search">
+        <form id="searchform" action="search.php" method="GET">
+                <input class="search-bar" type="text" placeholder="Rechercher" name="search">
                 <button class="search-button" type="submit"><i class="fa fa-search"></i></button>
             </form>
 

@@ -129,14 +129,19 @@ include ('include/connectBDD.php');
             <li class="li-nav"><a class="a-nav" href="contact.php">Contact</a></li>
         
             <li class="dropdown">
-            <?php  if(isset($_SESSION['Pseudo'])){?>
+            <?php  if(isset($_SESSION['Pseudo'])) {
+                $_SESSION['id_typeuser']='2';?>
                 <a class="a-nav" href="javascript:void(0)" class="dropbtn">Hello <?php echo $_SESSION['Pseudo'];?></a>
                 <div class="dropdown-content">
                     <a class="a-nav" href="traitement/deconnexion.php">Se déconnecter</a>
                     <a class="a-nav" href="admin.php">Admin</a>
                 </div>
 
-               <?php }else{                  
+         
+               
+  
+               <?php }else{ 
+   
 
                 ?>          
 

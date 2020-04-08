@@ -17,7 +17,11 @@
             session_start();
             $_SESSION['id_user']=$ok['id_user'];
             $_SESSION['Pseudo']=$username;
+            $_SESSION['id_typeuser']='2';
             header('location:../admin.php');
+                }
+                if($_SESSION['id_typeuser']='4'){
+                    header('location:../index.php');
                 }
                 else{
                     echo "mauvais mdp";

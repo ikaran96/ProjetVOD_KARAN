@@ -2,6 +2,9 @@
 session_start();
 header('Content-type: text/html; charset=utf-8');
 require_once 'styleswitcher.php';
+if($_SESSION['id_typeuser']='2'){
+
+
 ?>
 
 
@@ -11,7 +14,7 @@ require_once 'styleswitcher.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajouter des films</title>
+    <title>Admin</title>
 
     <link rel="stylesheet" href="css/reset.css">
 
@@ -165,6 +168,7 @@ require_once 'styleswitcher.php';
         <button class="tablink" onclick="openPage('Genres', this)">Genres</button>
         <button class="tablink" onclick="openPage('Relations', this)">Relations</button>
         <button class="tablink" onclick="openPage('Admin', this)">Admin</button>
+        <button class="tablink" onclick="openPage('Delete', this)">Delete/Update</button>
 
     </div>
 
@@ -540,7 +544,37 @@ require_once 'styleswitcher.php';
             </div>
         </form>
     </div>
+    <!------------------------------------DELETE UPDATE----------------------------------------------->
 
+
+    <div id="Delete" class="tabcontent">
+
+            <table>
+        <tbody>
+        <tr>
+        <td>id_film</td>
+        <td>Film</td>
+        <td>Modifier</td>
+        <td>Supprimer</td>
+        </tr>
+        <?php
+       $crud=$bdd->prepare("SELECT * FROM Film");
+       $crud->execute();
+       while($cruddonnees=$crud->fetch()){?>
+
+        <tr>
+        <td> <p><?php echo $cruddonnees['id_film'];?></p></td>
+        <td> <p><?php echo $cruddonnees['Titre'];?></p></td>
+        <td><a href="traitement/modif.php?id=<?php echo $cruddonnees['id_film'];?>">Modifier </a></td>
+        <td> <a href="traitement/supp.php?id=<?php echo $cruddonnees['id_film'];?>">Supprimer</a> </td>
+        </tr>
+        
+        <?php } ?>
+
+        </tbody>
+        </table>
+       
+    </div>
 
 
 
@@ -621,3 +655,6 @@ require_once 'styleswitcher.php';
 </body>
 
 </html>
+    <?php }else{
+        header('location:index.php');
+    }?>

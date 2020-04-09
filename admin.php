@@ -548,7 +548,7 @@ if($_SESSION['id_typeuser']='2'){
 
 
     <div id="Delete" class="tabcontent">
-
+<!-----------------Film---------------->
             <table>
         <tbody>
         <tr>
@@ -567,6 +567,38 @@ if($_SESSION['id_typeuser']='2'){
         <td> <p><?php echo $cruddonnees['Titre'];?></p></td>
         <td><a href="traitement/modif.php?id=<?php echo $cruddonnees['id_film'];?>">Modifier </a></td>
         <td> <a href="traitement/supp.php?id=<?php echo $cruddonnees['id_film'];?>">Supprimer</a> </td>
+        </tr>
+        
+        <?php } ?>
+
+        </tbody>
+        </table>
+
+
+        <!-----------------Acteur---------------->
+
+        <table>
+        <tbody>
+        <tr>
+        <td>id_acteur</td>
+        <td>Nom</td>
+        <td>Prenom</td>
+        <td>Pays</td>
+        <td>Modifier</td>
+        <td>Supprimer</td>
+        </tr>
+        <?php
+       $crud2=$bdd->prepare("SELECT * FROM Acteur");
+       $crud2->execute();
+       while($cruddonnees2=$crud2->fetch()){?>
+
+        <tr>
+        <td> <p><?php echo $cruddonnees2['id_acteur'];?></p></td>
+        <td> <p><?php echo $cruddonnees2['Nom'];?></p></td>
+        <td> <p><?php echo $cruddonnees2['Prenom'];?></p></td>
+        <td> <p><?php echo $cruddonnees2['Origine'];?></p></td>
+        <td><a href="traitement/modif2.php?id=<?php echo $cruddonnees2['id_acteur'];?>">Modifier </a></td>
+        <td> <a href="traitement/supp.php?id=<?php echo $cruddonnees2['id_acteur'];?>">Supprimer</a> </td>
         </tr>
         
         <?php } ?>

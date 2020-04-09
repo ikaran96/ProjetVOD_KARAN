@@ -1591,46 +1591,6 @@ select{
 
 }
 
-/*----------------------------TABLEAU-----------------------------*/
-.modif-h2{
-    color:white;
-    font-size:10px;
-    font-family:Arial, Helvetica, sans-serif;
-    font-weight:100;
-}
-
-.tab-modif{
-    display:flex;
-    width:100%;
-    justify-content: space-evenly;
-    background-color:black;
-    
-}
-
-.modif-cat{
-    border:5px solid black;
-    width:auto;
-    background-color:black;
-    color:red;
-}
-
-.req-modif{
-    background-color:white;
-    display:flex;
-    width:100%;
-    justify-content: space-evenly;
-}
-
-.req-res{
-
-    background-color:white;
-    border:5px solid white;
-}
-
-.req-res > .modif-h2{
-    color:black;
-}
-
 
 
 /*----------------------------PAGE ACTEUR-----------------------------*/
@@ -1713,4 +1673,38 @@ select{
         font-size:50px;
     }
 
+}
+
+
+
+/*---------------------UPDATE DELETE---------------------*/
+
+table{
+    background-color:white;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:50px;
+    font-family:'Ubuntu',Arial, Helvetica, sans-serif;
+    width:80%; 
+    border:5px solid #FF7200;
+   
+}
+
+td{
+    
+    border:2px solid black;
+    font-size:10px;
+    padding:10px;
+    width:auto;
+   
+}
+
+td > a {
+    text-decoration: none;
+    color:#FF7200;
+    
+}
+
+td > a:hover{
+    color:black;
 }

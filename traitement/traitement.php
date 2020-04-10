@@ -1,23 +1,19 @@
 <?php
-
-  $username = !empty($_POST['username']) ? $_POST['username'] : NULL;
-  $user_firstname = !empty($_POST['user_firstname']) ? $_POST['user_firstname'] : NULL;
-  $user_mail = !empty($_POST['user_mail']) ? $_POST['user_mail'] : NULL;
-  $user_message= !empty($_POST['user_message']) ? $_POST['user_message'] : NULL;
-  $headers = "From: $username $user_firstname" . "\r\n" .
-  "CC: $user_mail";
-
-  $to = "karan@simplon-charleville.fr";
-  $subject = "Nouveau message";
-
-  mail($to,$subject, $user_message,$headers);
+    
+    $nom=$_POST['username'];
+    $prenom=$_POST['user_firstname'];
+    $subject="Nouveau message";
+    $email=$_POST['user_mail'];
+    $message=$_POST['user_message'];
+    $headers = "From: $email" . "\r\n" .
+    "CC: karan@simplon-charleville.fr";
+    $to="karan@simplon-charleville.fr";
 
 
+    if(isset($message)){
+   
+    
+    mail($to,$subject,$message,$headers);
+    }
 
-
-
-  header('location:../index.php');
-
-?>
-
-
+    header('location:../contact.php');?>

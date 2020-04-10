@@ -12,7 +12,7 @@
 
   
     $sql = $bdd->prepare ("INSERT INTO User (Nom, Prenom, Pseudo, Mdp, Mail, id_typeuser)
-                          VALUES ( :name_user, :firstname_user, :username, :password_user, :username_mail,:type_user)");
+                          VALUES ( :name_user, :firstname_user, :username, :password_user, :username_mail,4)");
   
     
 
@@ -21,8 +21,7 @@
         'firstname_user' => $prenom,
         'username' => $pseudo,
         'password_user' => $mdp,
-        'username_mail' => $mail,
-        'type_user' => $type
+        'username_mail' => $mail
     ));
   
     $sql-> closeCursor();

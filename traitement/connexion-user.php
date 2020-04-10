@@ -14,18 +14,26 @@
 
     if(isset($ok['Pseudo'])){
         if($ok['Mdp']==$password){
-            session_start();
-            $_SESSION['id_user']=$ok['id_user'];
-            $_SESSION['Pseudo']=$username;
-            $_SESSION['id_typeuser']='2';
-            header('location:../admin.php');
+            if($ok['id_typeuser']==2){
+                session_start();
+                $_SESSION['id_user']=$ok['id_user'];
+                $_SESSION['Pseudo']=$username;
+                $_SESSION['typeuser']="admin";
+                header('location:../admin.php');
                 }
-                if($_SESSION['id_typeuser']='4'){
+                if($ok['id_typeuser']==4){
+                    session_start();
+                    $_SESSION['id_user']=$ok['id_user'];
+                    $_SESSION['Pseudo']=$username;
+                    $_SESSION['typeuser']="user";
                     header('location:../index.php');
-                }
-                else{
-                    echo "mauvais mdp";
-                }}
+                    }
+                
+            }
+        }else{
+            header('location:../connexion.php?error=login');
+
+        }
     
 
 ?>

@@ -130,7 +130,7 @@ include ('include/connectBDD.php');
         
             <li class="dropdown">
             <?php  if(isset($_SESSION['Pseudo'])) {
-                $_SESSION['id_typeuser']='2';?>
+                ?>
                 <a class="a-nav" href="javascript:void(0)" class="dropbtn">Hello <?php echo $_SESSION['Pseudo'];?></a>
                 <div class="dropdown-content">
                     <a class="a-nav" href="traitement/deconnexion.php">Se déconnecter</a>

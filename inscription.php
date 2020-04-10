@@ -179,11 +179,7 @@ require_once 'styleswitcher.php';
             
             <input class="login"  type="password" placeholder="Mot de passe" name="password_user" required><br>
 
-            <select name="type_user" id="type">
-            <option name ="type_user" value="2">Admin</option>
-            <option name ="type_user" value="3">Mod</option>
-            <option name ="type_user" value="4">User</option>
-            </select>
+            
 
 
             <input class="ok"type="submit" id='inscription' name="inscription" value='Inscription'> <br>

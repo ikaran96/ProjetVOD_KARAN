@@ -2,10 +2,17 @@
 session_start();
 header('Content-type: text/html; charset=utf-8');
 require_once 'styleswitcher.php';
-if($_SESSION['id_typeuser']='2'){
+include 'include/connectBDD.php';
 
 
-?>
+
+$allow=$bdd->prepare("SELECT id_typeuser, Pseudo FROM User");
+$allow->execute();
+$admin_only=$allow->fetch();
+
+if(isset($_SESSION['Pseudo'])){
+    if($admin_only['id_typeuser']=2){?>
+
 
 
 <!DOCTYPE html>
@@ -42,6 +49,7 @@ if($_SESSION['id_typeuser']='2'){
 </head>
 
 <body>
+
 
     <!--TOGGLE MOBILE-->
 
@@ -566,7 +574,14 @@ if($_SESSION['id_typeuser']='2'){
         <td> <p><?php echo $cruddonnees['id_film'];?></p></td>
         <td> <p><?php echo $cruddonnees['Titre'];?></p></td>
         <td><a href="traitement/modif.php?id=<?php echo $cruddonnees['id_film'];?>">Modifier </a></td>
-        <td> <a href="traitement/supp.php?id=<?php echo $cruddonnees['id_film'];?>">Supprimer</a> </td>
+        <td> 
+        <a onclick="myFunction()" href="traitement/supp.php?id=<?php echo $cruddonnees['id_film'];?>">Supprimer</a> 
+        <script>
+        function myFunction() {
+        confirm("<?php echo $cruddonnees['Titre'];?> a été supprimé");
+        }
+        </script>
+        </td>
         </tr>
         
         <?php } ?>
@@ -598,7 +613,12 @@ if($_SESSION['id_typeuser']='2'){
         <td> <p><?php echo $cruddonnees2['Prenom'];?></p></td>
         <td> <p><?php echo $cruddonnees2['Origine'];?></p></td>
         <td><a href="traitement/modif2.php?id=<?php echo $cruddonnees2['id_acteur'];?>">Modifier </a></td>
-        <td> <a href="traitement/supp.php?id=<?php echo $cruddonnees2['id_acteur'];?>">Supprimer</a> </td>
+        <td> <a onclick="myFunction2()" href="traitement/supp-acteur.php?id=<?php echo $cruddonnees2['id_acteur'];?>">Supprimer</a> </td>
+        <script>
+        function myFunction2() {
+        confirm("<?php echo $cruddonnees2['Prenom'];?> <?php echo $cruddonnees2['Nom'];?> a été supprimé");
+        }
+        </script>
         </tr>
         
         <?php } ?>
@@ -657,7 +677,13 @@ if($_SESSION['id_typeuser']='2'){
         <div class="copy">© 2020 Allo Simplon Tous droits réservés.</div>
 
     </footer>
-
+    <?php }else{
+        header('location:connexion.php');
+    }
+    
+}else{
+    header('location:index.php');
+}?> 
     <script>
         function openPage(pageName, elmnt, color) {
             // Hide all elements with class="tabcontent" by default */
@@ -687,6 +713,3 @@ if($_SESSION['id_typeuser']='2'){
 </body>
 
 </html>
-    <?php }else{
-        header('location:index.php');
-    }?>

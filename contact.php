@@ -8,6 +8,7 @@ include ('include/connectBDD.php');
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,63 +32,67 @@ include ('include/connectBDD.php');
         rel="stylesheet">
 
 
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
+
 <body>
 
 
-<!--TOGGLE MOBILE-->
+    <!--TOGGLE MOBILE-->
 
-<div class="menu-wrap">
-    <input type="checkbox" class="toggler">
-    <div class="hamburger">
-        <div></div>
-    </div>
-    <div class="menu">
-        <div>
+    <div class="menu-wrap">
+        <input type="checkbox" class="toggler">
+        <div class="hamburger">
+            <div></div>
+        </div>
+        <div class="menu">
             <div>
-                <ul>
-                    <Li><a href="catalogue.php">Films</a></Li>
-                    <Li><a href="connexion.php">Connexion</a></Li>
-                    <Li><a href="contact.php">Contact</a></Li>
+                <div>
+                    <ul>
+                        <Li><a href="catalogue.php">Films</a></Li>
+                        <Li><a href="connexion.php">Connexion</a></Li>
+                        <Li><a href="contact.php">Contact</a></Li>
                         <div class="liens-couleurs">
 
-                    <li>
-                        <div class="style_axel"><a href="<?php echo $actuel; ?>?style=../css/index.css"></a>
-                            <div>
-                    </li>
-                    <li>
-                        <div class="style_pol"><a href="<?php echo $actuel; ?>?style=../pol/index2.css"></a></div>
-                    </li>
-                    <li>
-                        <div class="style_steven"><a href="<?php echo $actuel; ?>?style=../steven/index3.css"></a></div>
-                    </li>
-                    <li>
-                        <div class="style_ilayda"><a href="<?php echo $actuel; ?>?style=../axel/index4.css"></a></div>
-                    </li>
-                    </div>
+                            <li>
+                                <div class="style_axel"><a href="<?php echo $actuel; ?>?style=../css/index.css"></a>
+                                    <div>
+                            </li>
+                            <li>
+                                <div class="style_pol"><a href="<?php echo $actuel; ?>?style=../pol/index2.css"></a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="style_steven"><a
+                                        href="<?php echo $actuel; ?>?style=../steven/index3.css"></a></div>
+                            </li>
+                            <li>
+                                <div class="style_ilayda"><a href="<?php echo $actuel; ?>?style=../axel/index4.css"></a>
+                                </div>
+                            </li>
+                        </div>
 
 
 
-                    <form action="">
-                        <input type="text" placeholder="" name="search">
-                        <button class="search-button" type="submit"><i class="fa fa-search"></i></button>
-                    </form>
+                        <form action="">
+                            <input type="text" placeholder="" name="search">
+                            <button class="search-button" type="submit"><i class="fa fa-search"></i></button>
+                        </form>
 
-                </ul>
+                    </ul>
+                </div>
             </div>
         </div>
+
     </div>
 
-</div>
 
+    <!--TITRE-->
 
-<!--TITRE-->
-
-<div class="title-dada">
-    <h1> <a href="index.php"> ALLO SIMPLON</a></h1>
-</div>
+    <div class="title-dada">
+        <h1> <a href="index.php"> ALLO SIMPLON</a></h1>
+    </div>
 
 
     <!--NAV BAR-->
@@ -100,12 +105,12 @@ include ('include/connectBDD.php');
 
         <div class="liens-nav">
 
-     
+
             <li class="li-nav"><a class="a-nav" href="catalogue.php">Catalogue</a></li>
             <li class="li-nav"><a class="a-nav" href="contact.php">Contact</a></li>
-        
+
             <li class="dropdown">
-            <?php  if(isset($_SESSION['Pseudo'])) {
+                <?php  if(isset($_SESSION['Pseudo'])) {
                 $_SESSION['id_typeuser']='2';?>
                 <a class="a-nav" href="javascript:void(0)" class="dropbtn">Hello <?php echo $_SESSION['Pseudo'];?></a>
                 <div class="dropdown-content">
@@ -113,28 +118,28 @@ include ('include/connectBDD.php');
                     <a class="a-nav" href="admin.php">Admin</a>
                 </div>
 
-            <?php } if(isset($_SESSION['Pseudo'])) {
+                <?php } if(isset($_SESSION['Pseudo'])) {
                 $_SESSION['id_typeuser']='4';?>
-                                <div class="dropdown-content">
+                <div class="dropdown-content">
                     <a class="a-nav" href="traitement/deconnexion.php">Se déconnecter</a>
                     <a class="a-nav" href="admin.php">Dashboard</a>
                 </div>
 
-               
-  
-               <?php }else{ 
+
+
+                <?php }else{ 
    
 
-                ?>          
+                ?>
 
-                
+
                 <a class="a-nav" href="javascript:void(0)" class="dropbtn">Connexion/Inscription</a>
                 <div class="dropdown-content">
                     <a class="a-nav" href="connexion.php">Se connecter</a>
                     <a class="a-nav" href="inscription.php">S'inscrire</a>
 
                 </div>
-               <?php }?>
+                <?php }?>
             </li>
             <li class="dropdown themes">
                 <a class="a-nav" href="javascript:void(0)" class="dropbtn">Thèmes</a>
@@ -148,9 +153,9 @@ include ('include/connectBDD.php');
             </li>
         </div>
         <form id="searchform" action="search.php" method="GET">
-                <input class="search-bar" type="text" placeholder="Rechercher" name="search">
-                <button class="search-button" type="submit"><i class="fa fa-search"></i></button>
-            </form>
+            <input class="search-bar" type="text" placeholder="Rechercher" name="search">
+            <button class="search-button" type="submit"><i class="fa fa-search"></i></button>
+        </form>
 
     </ul>
 
@@ -158,27 +163,26 @@ include ('include/connectBDD.php');
     <div class="vide"></div>
 
 
-<!---------------------FORMULAIRE DE CONTACT----------------->
+    <!---------------------FORMULAIRE DE CONTACT----------------->
 
 
     <form class="form-contact" action="traitement/traitement.php" method="post">
         <h2 class="contactez-nous">Contactez-nous</h2>
 
         <div class="info_form">
-           
-            <input class="input-contact" type="text" id="name" name="username" placeholder="Nom">
 
-           
-            <input class="input-contact" type="text" id="name" name="user_firstname" placeholder="Prénom">
+            <input class="input-contact" type="text" id="name" name="username" placeholder="Nom" required>
 
-           
-            <input class="input-contact" type="email" id="mail" name="user_mail" placeholder="E-Mail">
+
+            <input class="input-contact" type="text" id="name" name="user_firstname" placeholder="Prénom" required>
+
+
+            <input class="input-contact" type="email" id="mail" name="user_mail" placeholder="E-Mail" required>
         </div>
 
         <div class="message_form">
-            
-            <textarea id="msg" name="user_message"
-                placeholder="Tapez votre message ici"></textarea>
+
+            <textarea id="msg" name="user_message" placeholder="Tapez votre message ici" required></textarea>
             <div class="button">
                 <button class="button_form" type="submit">Envoyer</button>
             </div>
@@ -186,53 +190,51 @@ include ('include/connectBDD.php');
 
     </form>
 
-    
 
-</form>    
+    <!--FOOTER-->
 
-<!--FOOTER-->
+    <footer>
+        <div class="col-footer">
+            <div class="sous-footer">
+                <p>
+                    <h3 class="title-footer">A propos d'Allo Simplon</h3>
+                    <a class="liens-footer" href="#">Qui sommes-nous ?</a> <br>
+                    <a class="liens-footer" href=""> Allo Simplon recrute </a> <br>
+                    <a class="liens-footer" href=""> Contactez-nous </a> <br>
+                </p>
+            </div>
 
-<footer>
-    <div class="col-footer">
-        <div class="sous-footer">
-            <p>
-                <h3 class="title-footer">A propos d'Allo Simplon</h3>
-                   <a class="liens-footer" href="#">Qui sommes-nous ?</a> <br>
-                   <a class="liens-footer" href=""> Allo Simplon recrute </a> <br>
-                   <a class="liens-footer" href=""> Contactez-nous </a> <br>
-            </p>
+            <div class="sous-footer">
+
+                <p>
+                    <h3 class="title-footer">Aide</h3>
+                    <a class="liens-footer" href=""> Mon compte</a> <br>
+                    <a class="liens-footer" href=""> Forfaits </a><br>
+                    <a class="liens-footer" href=""> Facturation</a> <br>
+
+
+
+                </p>
+
+            </div>
+
+            <div class="sous-footer">
+
+                <p>
+                    <h3 class="title-footer">Mentions</h3>
+                    <a class="liens-footer" href=""> Mentions légales </a> <br>
+                    <a class="liens-footer" href=""> Conditions d'utlisation </a> <br>
+                    <a class="liens-footer" href="">Confidentialité</a> <br>
+
+
+                </p>
+            </div>
         </div>
 
-        <div class="sous-footer">
 
-            <p>
-                <h3 class="title-footer">Aide</h3>
-                   <a class="liens-footer" href=""> Mon compte</a> <br>
-                   <a class="liens-footer" href=""> Forfaits </a><br> 
-                   <a class="liens-footer" href=""> Facturation</a> <br>
+        <div class="copy">© 2020 Allo Simplon Tous droits réservés.</div>
 
-
-
-            </p>
-
-        </div>
-
-        <div class="sous-footer">
-
-            <p>
-                <h3 class="title-footer">Mentions</h3>
-               <a class="liens-footer" href=""> Mentions légales </a> <br>
-                <a class="liens-footer" href=""> Conditions d'utlisation </a> <br> 
-               <a class="liens-footer" href="">Confidentialité</a>  <br>
-
-
-            </p>
-        </div>
-    </div>
-
-
-    <div class="copy">© 2020 Allo Simplon Tous droits réservés.</div>
-
-</footer>  
+    </footer>
 </body>
+
 </html>

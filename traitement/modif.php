@@ -17,6 +17,14 @@
         padding-top: 20px;
         padding-bottom: 20px;
     }
+    
+select{
+    width: 80%;
+        border: 5px solid black;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        padding: 20px;
+}
 
     .input-contact {
         width: 80%;
@@ -54,6 +62,8 @@
 
         text-decoration: none;
         color: black;
+        font-weight:900;
+        font-size:30px;
     }
 
 
@@ -96,8 +106,10 @@ $req->execute();
 $modif=$req->fetch();?>
 
         <h3><?php echo $modif['Titre'];?></h3>
+
+        <p>(Cliquez sur le genre pour le supprimer)</p>
           
-        <p><?php
+        <?php
             $est=$bdd->prepare("SELECT * FROM est2 WHERE id_film=".$id_film);
             $est->execute();
             while($est2=$est->fetch()){
@@ -105,7 +117,7 @@ $modif=$req->fetch();?>
             $req5 = $bdd->prepare(" SELECT * FROM Genre WHERE id_genre=".$est2['id_genre']);
             $req5->execute();
             while ( $donnees = $req5->fetch() ){ ?>
-             <?php echo $donnees['genre'];?></p>  
+             <p><a href="supp-genre.php?id=<?php echo $donnees['id_genre'];?>"><?php echo $donnees['genre'];?></a></p>
             <?php  }}    ?>
 
 
@@ -163,6 +175,7 @@ $synopsis = $_POST['synopsis'];
 $sortie =$_POST['sortie'];
 $notefilm = $_POST['notefilm'];
 $duree =$_POST['duree'];
+$genre=$_POST['genre'];
 
 if(!empty($titre)){
     $req=$bdd->prepare("UPDATE Film SET Titre = ? WHERE id_film=$id_film");
@@ -190,6 +203,12 @@ if(!empty($notefilm)){
 if(!empty($duree)){
     $req=$bdd->prepare("UPDATE Film SET Duree = ? WHERE id_film=$id_film");
     $req->execute([$duree]);
+}
+
+if(!empty($genre)){
+    $req=$bdd->prepare("INSERT INTO est2 (id_genre, id_film)
+                         VALUES ($genre, $id_film)");
+    $req->execute(([$genre]));
 }
 
 

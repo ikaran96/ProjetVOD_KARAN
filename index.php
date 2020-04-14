@@ -135,6 +135,7 @@ include ('include/connectBDD.php');
                 <div class="dropdown-content">
                     <a class="a-nav" href="traitement/deconnexion.php">Se déconnecter</a>
                     <a class="a-nav" href="admin.php">Admin</a>
+                    <a class="a-nav" href="dashboard.php">Profil</a>
                 </div>
 
          

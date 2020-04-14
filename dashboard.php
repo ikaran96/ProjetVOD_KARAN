@@ -2,9 +2,7 @@
 session_start();
 header('Content-type: text/html; charset=utf-8');
 require_once 'styleswitcher.php';
-include ('include/connectBDD.php');
-?>
-
+include 'include/connectBDD.php';?>
 
 
 <!DOCTYPE html>
@@ -13,11 +11,11 @@ include ('include/connectBDD.php');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catalogue</title>
+    <title>Dashboard</title>
 
     <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" media="screen, projection" type="text/css" id="css" href="<?php echo $url; ?>" />
 
+    <link rel="stylesheet" media="screen, projection" type="text/css" id="css" href="<?php echo $url; ?>" />
 
     <!--GOOGLE FONTS-->
 
@@ -35,14 +33,14 @@ include ('include/connectBDD.php');
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/parallax.js/1.4.2/parallax.min.js"></script>
 
 
 </head>
 
 <body>
+
+
     <!--TOGGLE MOBILE-->
 
     <div class="menu-wrap">
@@ -98,9 +96,10 @@ include ('include/connectBDD.php');
         <h1> <a href="index.php"> ALLO SIMPLON</a></h1>
     </div>
 
-   <!--NAV BAR-->
 
-   <ul class="new-nav">
+    <!--NAV BAR-->
+
+    <ul class="new-nav">
         <div class="logo-simplon">
             <li class="li-nav"><a class="a-nav" href="index.php">ALLO SIMPLON</a></li>
 
@@ -113,8 +112,7 @@ include ('include/connectBDD.php');
             <li class="li-nav"><a class="a-nav" href="contact.php">Contact</a></li>
         
             <li class="dropdown">
-            <?php  if(isset($_SESSION['Pseudo'])) {
-                $_SESSION['id_typeuser']='2';?>
+            <?php  if(isset($_SESSION['Pseudo'])){?>
                 <a class="a-nav" href="javascript:void(0)" class="dropbtn">Hello <?php echo $_SESSION['Pseudo'];?></a>
                 <div class="dropdown-content">
                     <a class="a-nav" href="traitement/deconnexion.php">Se déconnecter</a>
@@ -122,10 +120,7 @@ include ('include/connectBDD.php');
                     <a class="a-nav" href="dashboard.php">Profil</a>
                 </div>
 
-                         
-  
-               <?php }else{ 
-   
+               <?php }else{                  
 
                 ?>          
 
@@ -159,87 +154,53 @@ include ('include/connectBDD.php');
 
     <div class="vide"></div>
 
+    <h2 class="page-film">Bonjour <?php echo $_SESSION['Pseudo'];?></h2>
 
-    <!--NOS FILMS-->
-
-
-    <h2 class="axeltitreh2">Nos films</h2>
-
-    <div class="axelcontainer">
-
-        <!--FILTRES-->
-
-        <div class="axelgauche">
-            <h5 class="axelH5">Filtres</h5>
-            <h5 class="axelgenre">Genre</h5>
-            <?php 
-            $filtres = $bdd ->prepare("SELECT * FROM Genre ");
-            $filtres->execute();
-            while($filtresresult = $filtres->fetch()){ ?>
-
-            <div class="axelcase">
-                <input type="checkbox" id="coding" name="" value="">
-                <label for="coding"><?php echo $filtresresult['genre'];?></label>
-            </div>
-
-            <?php }?>
-           
-        </div>
+    <div class="info-favoris">
+   
+<div class="info-user">
+<h3>Informations</h3>   
+<p>Nom : <?php echo $_SESSION['Nom'];?> </p>
+<p>Prenom : <?php echo $_SESSION['Prenom'];?></p>
+<p>Mail : <?php echo $_SESSION['Mail'];?></p>
 
 
-        <!--CATALOGUE FILMS-->
-
-        <div class="axeldroite">
-            <?php 
-            $req = $bdd ->prepare("SELECT * FROM Film");
-            $req->execute();
-            while($donnees = $req->fetch()){?>
-
-            <a  href="parasite.php?id=<?php echo $donnees['id_film'];?>" class="versfilm">
-            
-                <div class="cardaxel">
-                
-                    <img class="poster-img" src="img/<?php echo $donnees['Affiche'];?>" alt="">
-                    <div class="titrefilm"><?php echo $donnees['Titre'];?> <a class="favoris" href="traitement/inserer-fav.php?id=<?php echo $donnees['id_film'];?>">  ♥</a></div>
-                    <div class="infoaxel">
-                        <div class="textaxel">
-                            <p><?php echo $donnees['Note'];?>/5</p>
-                            <p><?php echo $donnees['Duree'];?></p>
 
 
-                            <?php 
-                            $req2 = $bdd ->prepare("SELECT f.id_film, f.Titre, f.Affiche, f.Note, f.Duree, g.id_genre, g.genre, e.id_film, e.id_genre
-                                                    FROM Film f, Genre g, est2 e 
-                                                    WHERE e.id_genre = g.id_genre
-                                                    AND e.id_film = f.id_film
-                                                    AND e.id_film =" . $donnees['id_film']);
-                            $req2->execute();
-                            while($donnees2 = $req2->fetch()){ 
-                            ?>
+</div>
 
-                            <p><?php echo $donnees2['genre'];?></p><?php }?>
+<div class="user-favoris">
+<h3>Films favoris</h3> 
 
-                           
-                        </div>
-                    </div>
-                </div>
-            </a>
+<?php 
+$favoris=$bdd->prepare("SELECT * FROM favoris WHERE id_user =".$_SESSION['id_user']);
+$favoris->execute();
+while($favoris_user=$favoris->fetch()){
 
-            <?php }?>
-            
-        </div>
+$film=$bdd->prepare("SELECT * FROM Film WHERE id_film =".$favoris_user['id_film']);
+$film->execute();
+while($film_fav=$film->fetch()){    
+    
+    ?>
 
+<a href="parasite.php?id=<?php echo $film_fav['id_film'];?>"><?php echo $film_fav['Titre'];?></a> <br>
+<?php }} ?>
+
+
+
+
+</div>
 
     </div>
 
 
 
-    <!--PARALLAX-->
-
-    <div class="parallax-window" data-parallax="scroll" data-z-index="2" data-image-src=".\img\parallax2.jpg"></div>
 
 
-    <!--FOOTER-->
+  
+
+
+    <!-------------------------------------------------FOOTER------------------------------------------------->
 
     <footer>
         <div class="col-footer">
@@ -283,6 +244,8 @@ include ('include/connectBDD.php');
         <div class="copy">© 2020 Allo Simplon Tous droits réservés.</div>
 
     </footer>
+   
+
 </body>
 
 </html>

@@ -1,4 +1,4 @@
-           <?php
+<?php
 session_start();
 header('Content-type: text/html; charset=utf-8');
 require_once 'styleswitcher.php';
@@ -131,13 +131,7 @@ include ('include/connectBDD.php');
                 <div class="dropdown-content">
                     <a class="a-nav" href="traitement/deconnexion.php">Se déconnecter</a>
                     <a class="a-nav" href="admin.php">Admin</a>
-                </div>
-
-            <?php } if(isset($_SESSION['Pseudo'])) {
-                $_SESSION['id_typeuser']='4';?>
-                                <div class="dropdown-content">
-                    <a class="a-nav" href="traitement/deconnexion.php">Se déconnecter</a>
-                    <a class="a-nav" href="admin.php">Dashboard</a>
+                    <a class="a-nav" href="dashboard.php">Profil</a>
                 </div>
 
                

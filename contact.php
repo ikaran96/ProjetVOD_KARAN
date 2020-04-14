@@ -122,7 +122,8 @@ include ('include/connectBDD.php');
                 $_SESSION['id_typeuser']='4';?>
                 <div class="dropdown-content">
                     <a class="a-nav" href="traitement/deconnexion.php">Se déconnecter</a>
-                    <a class="a-nav" href="admin.php">Dashboard</a>
+                    <a class="a-nav" href="admin.php">Admin</a>
+                    <a class="a-nav" href="dashboard.php">Profil</a>
                 </div>
 
 

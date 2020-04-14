@@ -89,6 +89,7 @@ $modif=$req->fetch();?>
     <input class="input-contact" type="text" id="nom" name="nom" placeholder="Nom" value="<?php echo $modif['Nom'];?>">
 
     <input class="input-contact" type="text" id="pays" name="pays" placeholder="Pays" value="<?php echo $modif['Origine'];?>">
+    <input class="input-contact" type="text" id="image" name="image" placeholder="Nom de l'image" value="<?php echo $modif['image_acteur'];?>">
 
 
 
@@ -111,6 +112,7 @@ $modif=$req->fetch();?>
 $nom = !empty($_POST['nom']) ? $_POST['nom'] : NULL;
 $prenom = !empty($_POST['prenom']) ? $_POST['prenom'] : NULL;
 $origine = !empty($_POST['pays']) ? $_POST['pays'] : NULL;
+$image = !empty($_POST['image']) ? $_POST['image'] : NULL;
 
 
 if(!empty($nom)){
@@ -126,6 +128,11 @@ if(!empty($prenom)){
 if(!empty($origine)){
     $req=$bdd->prepare("UPDATE Acteur SET Origine = ? WHERE id_acteur=$id_acteur");
     $req->execute([$origine]);
+}
+
+if(!empty($imagee)){
+    $req=$bdd->prepare("UPDATE Acteur SET image_acteur = ? WHERE id_acteur=$id_acteur");
+    $req->execute([$image]);
 }
 
   

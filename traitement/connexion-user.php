@@ -17,15 +17,21 @@
             if($ok['id_typeuser']==2){
                 session_start();
                 $_SESSION['id_user']=$ok['id_user'];
+                $_SESSION['Nom']=$ok['Nom'];
+                $_SESSION['Prenom']=$ok['Prenom'];
+                $_SESSION['Mail']=$ok['Mail'];
                 $_SESSION['Pseudo']=$username;
-                $_SESSION['typeuser']="admin";
+
                 header('location:../admin.php');
                 }
                 if($ok['id_typeuser']==4){
                     session_start();
                     $_SESSION['id_user']=$ok['id_user'];
+                    $_SESSION['Nom']=$ok['Nom'];
+                    $_SESSION['Prenom']=$ok['Prenom'];
+                    $_SESSION['Mail']=$ok['Mail'];
                     $_SESSION['Pseudo']=$username;
-                    $_SESSION['typeuser']="user";
+
                     header('location:../index.php');
                     }
                 

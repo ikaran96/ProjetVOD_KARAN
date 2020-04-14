@@ -133,6 +133,7 @@ include ('include/connectBDD.php');
                 <div class="dropdown-content">
                     <a class="a-nav" href="traitement/deconnexion.php">Se déconnecter</a>
                     <a class="a-nav" href="admin.php">Admin</a>
+                    <a class="a-nav" href="dashboard.php">Profil</a>
                 </div>
 
                <?php }else{                  
@@ -188,7 +189,7 @@ include ('include/connectBDD.php');
     while($req5=$req4->fetch()){       
         
         ?>
-    <div class="titrefilm"> <a href="parasite.php?id=<?php echo $req3['id_film'];?>"> - <?php echo $req5['Titre'];?></a></div>
+    <div > <a class="versfilm" href="parasite.php?id=<?php echo $req3['id_film'];?>"> - <?php echo $req5['Titre'];?></a></div>
     <?php }}?>         
     </div>
 
